@@ -80,5 +80,28 @@ namespace RentLodge.Controllers
             }
             return NotFound();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(string userId, List<string> roles)
+        {
+            ApplicationUser user = await _userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                //get list of all user's roles
+                var userRoles = await _userManager.GetRolesAsync(user);
+                //get all roles
+                var allRoles = _roleManager.Roles.ToList();
+
+                var addedRoles = roles.Except(userRoles);
+                var removedRoles = userRoles.Except(roles);
+
+                await _userManager.AddToRolesAsync(user, addedRoles);
+
+                await _userManager.RemoveFromRolesAsync(user, removedRoles);
+
+                return RedirectToAction("UserList");
+            }
+            return NotFound();
+        }
     }
 }
