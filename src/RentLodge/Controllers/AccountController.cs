@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using RentLodge.Models;
 using RentLodge.Models.AccountViewModels;
 using RentLodge.Services;
+using RentLodge.Data;
 
 namespace RentLodge.Controllers
 {
@@ -36,6 +37,8 @@ namespace RentLodge.Controllers
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
+
+
 
         //
         // GET: /Account/Login
@@ -89,6 +92,11 @@ namespace RentLodge.Controllers
         [AllowAnonymous]
         public IActionResult Register()
         {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            IEnumerable<Country> allCountries = db.Countries.ToList();
+
+            ViewBag.Countries = new SelectList(allCountries, "Id", "Name");
             return View();
         }
 
