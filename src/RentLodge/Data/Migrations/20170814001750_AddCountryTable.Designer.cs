@@ -8,9 +8,10 @@ using RentLodge.Data;
 namespace RentLodge.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170814001750_AddCountryTable")]
+    partial class AddCountryTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -168,8 +169,6 @@ namespace RentLodge.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CountryId");
-
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
 
@@ -226,13 +225,6 @@ namespace RentLodge.Data.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("RentLodge.Models.ApplicationUser", b =>
-                {
-                    b.HasOne("RentLodge.Models.Country", "Country")
-                        .WithMany()
-                        .HasForeignKey("CountryId");
                 });
         }
     }

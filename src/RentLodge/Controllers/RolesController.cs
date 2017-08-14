@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using RentLodge.Models;
 using Microsoft.AspNetCore.Identity;
+using RentLodge.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RentLodge.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class RolesController : Controller
     {
         RoleManager<IdentityRole> _roleManager;
@@ -72,7 +75,7 @@ namespace RentLodge.Controllers
                 ChangeRoleViewModel model = new ChangeRoleViewModel
                 {
                     UserId = user.Id,
-                    UserEmail user.Email,
+                    UserEmail = user.Email,
                     UserRoles = userRoles,
                     AllRoles = allRoles
                 };

@@ -10,6 +10,27 @@
     <hr />
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
+        <label asp-for="FirstName" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="FirstName" class="form-control" />
+            @*<span asp-validation-for="Email" class="text-danger"></span>*@
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="LastName" class="form-control" />
+            @*<span asp-validation-for="Email" class="text-danger"></span>*@
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="CountryId" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <select asp-for="CountryId" asp-items="ViewBag.Countries" class="form-control"></select>
+            @*<span asp-validation-for="Email" class="text-danger"></span>*@
+        </div>
+    </div>
+    <div class="form-group">
         <label asp-for="Email" class="col-md-2 control-label"></label>
         <div class="col-md-10">
             <input asp-for="Email" class="form-control" />

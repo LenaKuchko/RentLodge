@@ -235,11 +235,17 @@ C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Sta
 C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Controllers\AccountController.cs
 C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Controllers\HomeController.cs
 C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Controllers\ManageController.cs
+C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Controllers\RolesController.cs
 C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Data\ApplicationDbContext.cs
 C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Data\Migrations\00000000000000_CreateIdentitySchema.cs
 C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs
+C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Data\Migrations\20170814001750_AddCountryTable.cs
+C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Data\Migrations\20170814001750_AddCountryTable.Designer.cs
+C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Data\Migrations\20170814003246_AddCounrtyToUser.cs
+C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Data\Migrations\20170814003246_AddCounrtyToUser.Designer.cs
 C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Data\Migrations\ApplicationDbContextModelSnapshot.cs
 C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Models\ApplicationUser.cs
+C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Models\Country.cs
 C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs
 C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Models\AccountViewModels\ForgotPasswordViewModel.cs
 C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Models\AccountViewModels\LoginViewModel.cs
@@ -259,3 +265,4 @@ C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Mod
 C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Services\IEmailSender.cs
 C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Services\ISmsSender.cs
 C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\Services\MessageServices.cs
+C:\users\elena\documents\visual studio 2015\Projects\RentLodge\src\RentLodge\ViewModels\ChangeRoleViewModel.cs
