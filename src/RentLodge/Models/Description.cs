@@ -16,5 +16,14 @@ namespace RentLodge.Models
         public string Floor { get; set; }
         public string AditionalInfo { get; set; }
         public int Guests { get; set; }
+
+        public Description(int bedrooms, int bathrooms, string floor, string aditionalInfo, int guests)
+        {
+            Bedrooms = bedrooms;
+            Bethrooms = bathrooms;
+            Floor = floor;
+            AditionalInfo = aditionalInfo;
+            Guests = guests;
+        }
     }
 }

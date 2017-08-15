@@ -1,0 +1,11 @@
+﻿@model RentLodge.Models.Description
+<form asp-controller="Description" asp-action="Create" method="post" class="form-horizontal" id="new-description">
+    <h4>Add Description</h4>
+    <hr />
+    <div class="form-group">
+        <label asp-for="Bedrooms" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Bedrooms" class="form-control" />
+        </div>
+    </div>
+</form>

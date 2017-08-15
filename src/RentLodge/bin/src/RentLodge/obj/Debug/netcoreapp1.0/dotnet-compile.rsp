@@ -233,6 +233,9 @@
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Program.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Startup.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Controllers\AccountController.cs
+C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Controllers\AddressController.cs
+C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Controllers\ApartmentController.cs
+C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Controllers\DescriptionController.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Controllers\HomeController.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Controllers\ManageController.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Controllers\RolesController.cs
@@ -241,6 +244,8 @@ C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Migrations\20170815160915_Initial
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Migrations\20170815160915_Initial.Designer.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Migrations\20170815163617_AddAddressDescriptionApartment.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Migrations\20170815163617_AddAddressDescriptionApartment.Designer.cs
+C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Migrations\20170815211253_DeleteCountryColumnFromAddress.cs
+C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Migrations\20170815211253_DeleteCountryColumnFromAddress.Designer.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Migrations\ApplicationDbContextModelSnapshot.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Models\Address.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Models\Apartment.cs

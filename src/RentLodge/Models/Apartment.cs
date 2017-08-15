@@ -21,5 +21,22 @@ namespace RentLodge.Models
         public Description Description { get; set; }
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
+
+        public Apartment(
+            string title, 
+            Address address, 
+            Description description, 
+            ApplicationUser user,
+            float rating = 0,
+            bool available = true
+            )
+        {
+            Title = title;
+            address = Address;
+            description = Description;
+            User = user;
+            Rating = rating;
+            Available = available;
+        }
     }
 }

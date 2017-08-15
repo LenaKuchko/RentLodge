@@ -1,0 +1,49 @@
+﻿@model RentLodge.Models.Apartment
+@{
+    ViewData["Title"] = "Create new apartment";
+}
+
+<h2>@ViewData["Title"].</h2>
+
+<form asp-controller="Apartment" asp-action="Create" method="post" class="form-horizontal">
+    <h4>Add new apartment</h4>
+    <hr />
+    <div class="form-group">
+        <label asp-for="Title" class="form-control"></label>
+        <div class="col-md-10">
+            <input asp-for="Title"/>
+        </div>
+    </div>
+    <div class="start-apartment-form">
+        <div class="add-address">Add address</div>
+        <div id="display-address-form"></div>
+        <div class="add-description">Add description</div>
+        <div id="display-description-form"></div>
+    </div>
+</form>
+
+<script>
+    $('.add-address').click(function () {
+        $.ajax({
+            type: 'GET',
+            dataType: 'html',
+            url: '@Url.Action("Create", "Address")',
+            success: function (result) {
+                $('#display-address-form').html(result);
+            }
+        });
+    });
+
+    $('.add-description').click(function () {
+        $.ajax({
+            type: 'GET',
+            dataType: 'html',
+            url: '@Url.Action("Create", "Description")',
+            success: function (result) {
+                $('#display-description-form').html(result);
+            }
+        });
+    });
+</script>
+
+

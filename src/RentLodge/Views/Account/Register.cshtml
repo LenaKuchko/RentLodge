@@ -26,7 +26,6 @@
     <div class="form-group">
         <label asp-for="CountryId" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-            
             @*@Html.DropDownListFor(m => m.CountryId, ViewBag.Countries as IEnumerable<SelectListItem>)*@
             <select asp-for="CountryId" asp-items="ViewBag.Countries" class="form-control"></select>
             @*<span asp-validation-for="Email" class="text-danger"></span>*@
