@@ -5,13 +5,12 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using RentLodge.Data;
 
-namespace RentLodge.Data.Migrations
+namespace RentLodge.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170814001750_AddCountryTable")]
-    partial class AddCountryTable
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -124,6 +123,52 @@ namespace RentLodge.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("RentLodge.Models.Address", b =>
+                {
+                    b.Property<string>("Id");
+
+                    b.Property<string>("Apatrtment");
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("Country");
+
+                    b.Property<string>("CountryId");
+
+                    b.Property<string>("Street");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Addresses");
+                });
+
+            modelBuilder.Entity("RentLodge.Models.Apartment", b =>
+                {
+                    b.Property<string>("Id");
+
+                    b.Property<string>("AddressId");
+
+                    b.Property<bool>("Available");
+
+                    b.Property<string>("DescriptionId");
+
+                    b.Property<float>("Rating");
+
+                    b.Property<string>("Title");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AddressId");
+
+                    b.HasIndex("DescriptionId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Apartments");
+                });
+
             modelBuilder.Entity("RentLodge.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id");
@@ -169,6 +214,8 @@ namespace RentLodge.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CountryId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
 
@@ -188,6 +235,25 @@ namespace RentLodge.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("RentLodge.Models.Description", b =>
+                {
+                    b.Property<string>("Id");
+
+                    b.Property<string>("AditionalInfo");
+
+                    b.Property<int>("Bedrooms");
+
+                    b.Property<int>("Bethrooms");
+
+                    b.Property<string>("Floor");
+
+                    b.Property<int>("Guests");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Descriptions");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -225,6 +291,28 @@ namespace RentLodge.Data.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("RentLodge.Models.Apartment", b =>
+                {
+                    b.HasOne("RentLodge.Models.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId");
+
+                    b.HasOne("RentLodge.Models.Description", "Description")
+                        .WithMany()
+                        .HasForeignKey("DescriptionId");
+
+                    b.HasOne("RentLodge.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("RentLodge.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("RentLodge.Models.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId");
                 });
         }
     }
