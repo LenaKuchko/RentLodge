@@ -26,8 +26,8 @@ namespace RentLodge.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-
-            return View();
+            ApplicationDbContext db = new ApplicationDbContext();
+            return View(db.Apartments.ToList());
         }
 
         public IActionResult Create() => View();
@@ -41,20 +41,12 @@ namespace RentLodge.Controllers
             Description Description = new Description(model.Bedrooms, model.Bathrooms, model.Floor, model.AditionalInfo, model.Guests);
 
             Apartment newApartment = new Apartment(
-                //model.City,
-                //model.Street,
-                //model.ApartmentNumber,
-                //model.CountryId,
-                //model.Bedrooms,
-                //model.Bathrooms,
-                //model.Floor,
                 model.Title,
                 model.Price,
-                model.AditionalInfo,
-                model.Guests);
+                model.Rating,
+                model.Available);
 
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            //newApartment.User = this.
             newApartment.UserId = userId;
             db.Addresses.Add(Address);
             db.SaveChanges();
@@ -64,11 +56,20 @@ namespace RentLodge.Controllers
             newApartment.DescriptionId = Description.Id;
             db.Apartments.Add(newApartment);
             db.SaveChanges();
-            return View("Index");
+            return View("Index", db.Apartments.ToList());
         }
 
-
+        public IActionResult Details(int id)
+        {
+            Apartment apartmentToDisplay = this._db.Apartments.FirstOrDefault(apartment => apartment.Id == id);
+            return View(apartmentToDisplay);
+        }
        
+        public IActionResult Edit(int id)
+        {
+            Apartment apartmentToEdit = this._db.Apartments.FirstOrDefault(apartment => apartment.Id == id);
+            return View(apartmentToEdit);
+        }
 
     }
 }

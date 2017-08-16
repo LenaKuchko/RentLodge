@@ -1,44 +1,44 @@
-﻿@model RentLodge.Models.ApartnmentViewModels
-<h4>Add address</h4>
-<hr />
-<div class="form-group">
-    <label asp-for="CountryId" class="col-md-2 control-label"></label>
-    <div class="col-md-10">
-        <select asp-for="CountryId" asp-items="ViewBag.Countries" class="form-control"></select>
-        @*<input asp-for="Country" class="form-control"/>*@
-    </div>
-</div>
-<div class="form-group">
-    <label asp-for="City" class="col-md-2 control-label"></label>
-    <div class="col-md-10">
-        <input asp-for="City" class="form-control" />
-    </div>
-</div>
-<div class="form-group">
-    <label asp-for="Street" class="col-md-2 control-label"></label>
-    <div class="col-md-10">
-        <input asp-for="Street" class="form-control" />
-    </div>
-</div>
-<div class="form-group">
-    <label asp-for="ApartmentNumber" class="col-md-2 control-label"></label>
-    <div class="col-md-10">
-        <input asp-for="ApartmentNumber" class="form-control" />
-    </div>
-</div>
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
+﻿@model RentLodge.Models.Apartment
+@{
+    ViewData["Title"] = "Details";
+}
 
-    </div>
-</div>
+    <h4>Apartment</h4>
+    <hr />
+        <h2>@Html.DisplayNameFor(modelItem => modelItem.Price) : @Html.DisplayFor(modelItem => modelItem.Price)</h2>
+        <h2>@Html.DisplayNameFor(modelItem => modelItem.Title) : @Html.DisplayFor(modelItem => modelItem.Title)</h2>
 
-<h4>Add Description</h4>
-<hr />
-<div class="form-group">
-    <label asp-for="Bedrooms" class="col-md-2 control-label"></label>
-    <div class="col-md-10">
-        <input asp-for="Bedrooms" class="form-control" />
-    </div>
-</div>
+    <div id="PartialDescription"></div>
+    <div id="PartialAddress"></div>
 
-<button type="submit" class="btn btn-default">Submit</button>
+
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+                dataType: 'html',
+                url: '@Url.Action("Details", "Description")',
+                data: { id: @Model.DescriptionId},
+                type: 'GET',
+                contentType: 'application/html',
+                success: function (result) {
+                    $('#PartialDescription').html(result);
+                }
+        });
+
+        $.ajax({
+            dataType: 'html',
+            url: '@Url.Action("Details", "Address")',
+            data: {id: @Model.AddressId},
+            type: 'GET',
+            contentType: 'application/html',
+            success: function (result) {
+                $('#PartialAddress').html(result);
+            }
+        });
+    });
+
+        //$(document).ready(function () {
+           
+        //});
+    </script>

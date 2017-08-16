@@ -15,6 +15,10 @@ namespace RentLodge.Models
         public int CountryId { get; set; }
         public Country Country { get; set; }
 
+        public Address()
+        {
+
+        }
         public Address(int countryId, string city, string street, string apartmentNumber)
         {
             //Country = country;

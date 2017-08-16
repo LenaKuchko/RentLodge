@@ -1,25 +1,18 @@
-﻿@model RentLodge.Models.ApartnmentViewModels.ApartmentViewModel
+﻿@model IEnumerable<RentLodge.Models.Apartment>
 @{
-    ViewData["Title"] = "Create new apartment";
+    ViewData["Title"] = "List of all apartments";
 }
 
 <h2>@ViewData["Title"].</h2>
 
-<form asp-controller="Apartment" asp-action="Index" method="post" class="form-horizontal">
+<form asp-controller="Apartment" asp-action="Index" class="form-horizontal">
     <h4>All apartments</h4>
     <hr />
-    <div class="form-group">
-        <label asp-for="Title" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Title" class="form-control" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Price" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Price" class="form-control" />
-        </div>
-    </div>
-    
+    @foreach (var item in Model)
+    {
+        @Html.ActionLink("Details", "Details", new { id = item.Id })|
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id });
+        <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+    }
    
 </form>

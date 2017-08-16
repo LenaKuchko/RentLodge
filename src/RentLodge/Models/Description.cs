@@ -18,6 +18,11 @@ namespace RentLodge.Models
         public string AditionalInfo { get; set; }
         public int Guests { get; set; }
 
+        public Description()
+        {
+
+        }
+
         public Description(int bedrooms, int bathrooms, string floor, string aditionalInfo, int guests)
         {
             Bedrooms = bedrooms;

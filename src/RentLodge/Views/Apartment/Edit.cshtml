@@ -1,0 +1,57 @@
+﻿@model RentLodge.Models.ApartnmentViewModels.ApartmentViewModel
+@{
+    ViewData["Title"] = "Edit new apartment";
+}
+
+<h2>@ViewData["Title"].</h2>
+
+<form asp-controller="Apartment" asp-action="Create" method="post" class="form-horizontal">
+    <h4>Edit apartment</h4>
+    <hr />
+    <div class="form-group">
+        <label asp-for="Title" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Title" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Price" class="form-control" />
+        </div>
+    </div>
+    <div class="start-apartment-form">
+        <div class="edit-address">Edit address</div>
+        <div id="display-address-form"></div>
+        <div class="edit-description">Edit description</div>
+        <div id="display-description-form"></div>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<script>
+
+    $('.edit-address').click(function () {
+        $.ajax({
+            type: 'GET',
+            dataType: 'html',
+            url: '@Url.Action("Edit", "Address")',
+            success: function (result) {
+                $('#display-address-form').html(result);
+            }
+        });
+    });
+
+    $('.edit-description').click(function () {
+        $.ajax({
+            type: 'GET',
+            dataType: 'html',
+            url: '@Url.Action("Edit", "Description")',
+            success: function (result) {
+                $('#display-description-form').html(result);
+            }
+        });
+    });
+</script>
+
+

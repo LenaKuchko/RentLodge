@@ -1,0 +1,13 @@
+﻿<h1>Partial from Description</h1>
+
+@model RentLodge.Models.Description
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@ViewData["Title"].</h2>
+
+    <h4>Description</h4>
+    <hr />
+    <h2>@Html.DisplayNameFor(modelItem => modelItem.Bedrooms) : @Html.DisplayFor(modelItem => modelItem.Bedrooms)</h2>
+    <h2>@Html.DisplayNameFor(modelItem => modelItem.Bethrooms) : @Html.DisplayFor(modelItem => modelItem.Bethrooms)</h2>

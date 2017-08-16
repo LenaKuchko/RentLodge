@@ -23,18 +23,13 @@ namespace RentLodge.Models
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
 
+        public Apartment()
+        {
+
+        }
         public Apartment(
-            //string city,
-            //string street,
-            //string apartmentNumber,
-            //int countryId,
-            //int bedrooms,
-            //int bathrooms,
-            //string floor, 
-            string aditionalInfo,
-            int guests,
+            
             string title,
-            //string userId,
             int price,
             float rating = 0,
             bool available = true

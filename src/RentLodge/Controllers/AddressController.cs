@@ -24,6 +24,12 @@ namespace RentLodge.Controllers
                 return View();
         }
 
+        public IActionResult Details(int id)
+        {
+            Address addressToDisplay = db.Addresses.FirstOrDefault(address => address.Id == id);
+            return PartialView(addressToDisplay);
+        }
+
         
         //[HttpPost]
         //public IActionResult Create(string countryId, string city, string street, string apartmentNumber)
