@@ -7,6 +7,7 @@ using RentLodge.Data;
 using RentLodge.Models;
 using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using RentLodge.Models.ApartnmentViewModels;
 
 namespace RentLodge.Controllers
 {
@@ -23,11 +24,19 @@ namespace RentLodge.Controllers
                 return View();
         }
 
-        [HttpPost]
-        public IActionResult Create(string countryId, string city, string street, string apartmentNumber)
-        {
-            Address newAddress = new Address(countryId, city, street, apartmentNumber);
-            return View();
-        }
+        
+        //[HttpPost]
+        //public IActionResult Create(string countryId, string city, string street, string apartmentNumber)
+        //{
+        //    Address newAddress = new Address(countryId, city, street, apartmentNumber);
+
+        //    return RedirectToAction("Create", "Apartment");
+        //}
+        //[HttpPost]
+        //public IActionResult Create(ApartmentViewModel model)
+        //{
+        //    Address newAddress = new Address(model.CountryId, model.City, model.Street, model.ApartmentNumber);
+        //    return RedirectToAction("Create", "Apartment");
+        //}
     }
 }

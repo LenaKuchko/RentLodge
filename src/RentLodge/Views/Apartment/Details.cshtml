@@ -1,0 +1,44 @@
+﻿@model RentLodge.Models.ApartnmentViewModels
+<h4>Add address</h4>
+<hr />
+<div class="form-group">
+    <label asp-for="CountryId" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <select asp-for="CountryId" asp-items="ViewBag.Countries" class="form-control"></select>
+        @*<input asp-for="Country" class="form-control"/>*@
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="City" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="City" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="Street" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Street" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="ApartmentNumber" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="ApartmentNumber" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+
+    </div>
+</div>
+
+<h4>Add Description</h4>
+<hr />
+<div class="form-group">
+    <label asp-for="Bedrooms" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Bedrooms" class="form-control" />
+    </div>
+</div>
+
+<button type="submit" class="btn btn-default">Submit</button>

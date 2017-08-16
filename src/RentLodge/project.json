@@ -1,4 +1,4 @@
-﻿{
+{
   "userSecretsId": "aspnet-RentLodge-27c433a4-db06-4d85-96a1-85cf9635b450",
 
   "dependencies": {
@@ -41,10 +41,11 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc":  {
+    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    }
+    },
+    "twitter-bootstrap-wizard": "1.2.2"
   },
 
   "tools": {

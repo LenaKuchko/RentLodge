@@ -11,30 +11,44 @@ namespace RentLodge.Models
     public class Apartment
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public bool Available { get; set; }
         public float Rating { get; set; }
-        public string AddressId { get; set; }
-        public Address Address { get; set; }
-        public string DescriptionId { get; set; }
-        public Description Description { get; set; }
+        public int Price { get; set; }
+        public int AddressId { get; set; }
+        //public Address Address { get; set; }
+        public int DescriptionId { get; set; }
+        //public Description Description { get; set; }
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
 
         public Apartment(
-            string title, 
-            Address address, 
-            Description description, 
-            ApplicationUser user,
+            //string city,
+            //string street,
+            //string apartmentNumber,
+            //int countryId,
+            //int bedrooms,
+            //int bathrooms,
+            //string floor, 
+            string aditionalInfo,
+            int guests,
+            string title,
+            //string userId,
+            int price,
             float rating = 0,
             bool available = true
             )
         {
+            //Address = new Address(countryId, city, street, apartmentNumber);
+            //AddressId = Address.Save();
+            //Description  = new Description(bedrooms, bathrooms, floor, aditionalInfo, guests);
+            //DescriptionId = Description.Save();
             Title = title;
-            address = Address;
-            description = Description;
-            User = user;
+            //AddressId = addressId;
+            //DescriptionId = descriptionId;
+            //UserId = userId;
+            Price = price;
             Rating = rating;
             Available = available;
         }

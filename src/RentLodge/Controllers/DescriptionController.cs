@@ -18,7 +18,7 @@ namespace RentLodge.Controllers
         public IActionResult Create(int bedrooms, int bathrooms, string floor, string aditionalInfo, int guests)
         {
             Description newDescription = new Description(bedrooms, bathrooms, floor, aditionalInfo, guests);
-            return View();
+            return View(newDescription);
         }
     }
 }

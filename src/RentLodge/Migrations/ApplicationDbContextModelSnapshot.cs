@@ -125,13 +125,14 @@ namespace RentLodge.Migrations
 
             modelBuilder.Entity("RentLodge.Models.Address", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ApartmentNumber");
 
                     b.Property<string>("City");
 
-                    b.Property<string>("CountryId");
+                    b.Property<int>("CountryId");
 
                     b.Property<string>("Street");
 
@@ -144,13 +145,16 @@ namespace RentLodge.Migrations
 
             modelBuilder.Entity("RentLodge.Models.Apartment", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AddressId");
+                    b.Property<int>("AddressId");
 
                     b.Property<bool>("Available");
 
-                    b.Property<string>("DescriptionId");
+                    b.Property<int>("DescriptionId");
+
+                    b.Property<int>("Price");
 
                     b.Property<float>("Rating");
 
@@ -178,7 +182,7 @@ namespace RentLodge.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
-                    b.Property<string>("CountryId");
+                    b.Property<int>("CountryId");
 
                     b.Property<string>("Email")
                         .HasAnnotation("MaxLength", 256);
@@ -228,7 +232,8 @@ namespace RentLodge.Migrations
 
             modelBuilder.Entity("RentLodge.Models.Country", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
 
@@ -239,7 +244,8 @@ namespace RentLodge.Migrations
 
             modelBuilder.Entity("RentLodge.Models.Description", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("AditionalInfo");
 
@@ -297,18 +303,21 @@ namespace RentLodge.Migrations
                 {
                     b.HasOne("RentLodge.Models.Country", "Country")
                         .WithMany()
-                        .HasForeignKey("CountryId");
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("RentLodge.Models.Apartment", b =>
                 {
                     b.HasOne("RentLodge.Models.Address", "Address")
                         .WithMany()
-                        .HasForeignKey("AddressId");
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("RentLodge.Models.Description", "Description")
                         .WithMany()
-                        .HasForeignKey("DescriptionId");
+                        .HasForeignKey("DescriptionId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("RentLodge.Models.ApplicationUser", "User")
                         .WithMany()
@@ -319,7 +328,8 @@ namespace RentLodge.Migrations
                 {
                     b.HasOne("RentLodge.Models.Country", "Country")
                         .WithMany()
-                        .HasForeignKey("CountryId");
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

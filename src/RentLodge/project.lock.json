@@ -4426,6 +4426,9 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "twitter-bootstrap-wizard/1.2.2": {
+        "type": "package"
       }
     }
   },
@@ -11126,6 +11129,19 @@
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
       ]
+    },
+    "twitter-bootstrap-wizard/1.2.2": {
+      "sha512": "wowlVS9NgLPnQbXr5Re9rvKAXQUf4d99LzHgh/eUwvoduvvXBkp4Dz+B21B7OxcqBdPJPRC5jm4QxPNFBScERg==",
+      "type": "package",
+      "path": "twitter-bootstrap-wizard/1.2.2",
+      "files": [
+        "content/Scripts/jquery.bootstrap.wizard.js",
+        "content/Scripts/jquery.bootstrap.wizard.js.map",
+        "content/Scripts/jquery.bootstrap.wizard.min.js",
+        "content/Scripts/jquery.bootstrap.wizard.min.js.map",
+        "twitter-bootstrap-wizard.1.2.2.nupkg.sha512",
+        "twitter-bootstrap-wizard.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -11154,7 +11170,8 @@
       "Microsoft.NETCore.App >= 1.0.1",
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Tools >= 1.0.0-preview2-final",
-      "Microsoft.VisualStudio.Web.CodeGenerators.Mvc >= 1.0.0-preview2-final"
+      "Microsoft.VisualStudio.Web.CodeGenerators.Mvc >= 1.0.0-preview2-final",
+      "twitter-bootstrap-wizard >= 1.2.2"
     ],
     ".NETCoreApp,Version=v1.0": []
   },

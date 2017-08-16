@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0",
-    "signature": "687b073dee277ff61dc4809246982b4ce30dbb68"
+    "signature": "ed487f0e8242a406ffcb84aa8b00e10ad5745fe5"
   },
   "compilationOptions": {
     "defines": [
@@ -35,7 +35,8 @@
           "Microsoft.Extensions.Logging.Console": "1.0.0",
           "Microsoft.Extensions.Logging.Debug": "1.0.0",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
-          "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0"
+          "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
+          "twitter-bootstrap-wizard": "1.2.2"
         },
         "runtime": {
           "RentLodge.dll": {}
@@ -2163,6 +2164,7 @@
           "lib/netstandard1.0/System.Text.Encodings.Web.dll": {}
         }
       },
+      "twitter-bootstrap-wizard/1.2.2": {},
       "Libuv/1.9.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1"
@@ -4472,6 +4474,11 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-TWZnuiJgPDAEEUfobD7njXvSVR2Toz+jvKWds6yL4oSztmKQfnWzucczjzA+6Dv1bktBdY71sZW1YN0X6m9chQ=="
+    },
+    "twitter-bootstrap-wizard/1.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wowlVS9NgLPnQbXr5Re9rvKAXQUf4d99LzHgh/eUwvoduvvXBkp4Dz+B21B7OxcqBdPJPRC5jm4QxPNFBScERg=="
     },
     "Libuv/1.9.0": {
       "type": "package",

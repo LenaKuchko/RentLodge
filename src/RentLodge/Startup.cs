@@ -94,7 +94,7 @@ namespace RentLodge
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            DatabaseInitialize(app.ApplicationServices).Wait();
+              DatabaseInitialize(app.ApplicationServices).Wait();
         }
 
         public async Task DatabaseInitialize(IServiceProvider serviceProvider)
@@ -106,7 +106,7 @@ namespace RentLodge
 
             string adminEmail = "admin@gmail.com";
             string password = "Admin!1";
-
+            int countryId = 1;
             if (await roleManager.FindByNameAsync("admin") == null)
             {
                 await roleManager.CreateAsync(new IdentityRole("admin"));
@@ -117,13 +117,14 @@ namespace RentLodge
             }
             if (await userManager.FindByNameAsync(adminEmail) == null)
             {
-                ApplicationUser admin = new ApplicationUser { Email = adminEmail, UserName = adminEmail };
+                ApplicationUser admin = new ApplicationUser { Email = adminEmail, UserName = adminEmail, CountryId = countryId};
                 IdentityResult result = await userManager.CreateAsync(admin, password);
                 if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(admin, "admin");
                 }
             }
+
         }
     }
 }

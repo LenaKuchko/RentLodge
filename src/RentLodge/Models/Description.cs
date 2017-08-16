@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RentLodge.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,7 +11,7 @@ namespace RentLodge.Models
     public class Description
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
         public int Bedrooms { get; set; }
         public int Bethrooms { get; set; }
         public string Floor { get; set; }
@@ -24,6 +25,15 @@ namespace RentLodge.Models
             Floor = floor;
             AditionalInfo = aditionalInfo;
             Guests = guests;
+        }
+
+        public int Save()
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            db.Descriptions.Add(this);
+            db.SaveChanges();
+            return this.Id;
         }
     }
 }

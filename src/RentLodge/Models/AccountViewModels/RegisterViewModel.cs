@@ -18,7 +18,7 @@ namespace RentLodge.Models.AccountViewModels
 
         [Required]
         [Display(Name = "Country")]
-        public string CountryId { get; set; }
+        public int CountryId { get; set; }
 
         [Required]
         [EmailAddress]
