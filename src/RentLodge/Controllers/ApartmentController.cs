@@ -9,6 +9,7 @@ using RentLodge.Data;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace RentLodge.Controllers
 {
@@ -74,12 +75,17 @@ namespace RentLodge.Controllers
         {
             var apartmentToEdit = this._db.Apartments.Include(apartment => apartment.Address).Include(apartment => apartment.Description).FirstOrDefault(apartment => apartment.Id == id);
 
+            IEnumerable<Country> allCountries = this._db.Countries.ToList();
+            ViewBag.Countries = new SelectList(allCountries, "Id", "Name");
+
             ApartmentViewModel model = new ApartmentViewModel(
+                apartmentToEdit.Id,
                 apartmentToEdit.Address.City,
                 apartmentToEdit.Address.Street,
                 apartmentToEdit.Address.ApartmentNumber,
                 apartmentToEdit.Address.CountryId,
-                apartmentToEdit.Title, apartmentToEdit.Price,
+                apartmentToEdit.Title, 
+                apartmentToEdit.Price,
                 apartmentToEdit.Description.Bedrooms,
                 apartmentToEdit.Description.Bethrooms,
                 apartmentToEdit.Description.Floor,
@@ -92,11 +98,32 @@ namespace RentLodge.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(int id, string title)
+        public IActionResult Edit(ApartmentViewModel model)
         {
-            Apartment apartmentToEdit = this._db.Apartments.FirstOrDefault(apartment => apartment.Id == id);
-            apartmentToEdit.Title = title;
-            return View(apartmentToEdit);
+            Apartment apartmentToEdit = this._db.Apartments.FirstOrDefault(apartment => apartment.Id == model.ApartmentId);
+            //var id = apartmentToEdit.AddressId;
+            Address addressToEdit = this._db.Addresses.FirstOrDefault(address => address.Id == apartmentToEdit.AddressId);
+            Description descriptionToEdit = this._db.Descriptions.FirstOrDefault(description => description.Id == apartmentToEdit.DescriptionId);
+
+            apartmentToEdit.Title = model.Title;
+            apartmentToEdit.Available = model.Available;
+            apartmentToEdit.Price = model.Price;
+            this._db.Entry(apartmentToEdit).State = EntityState.Modified;
+            this._db.SaveChanges();
+
+            addressToEdit.City = model.City;
+            addressToEdit.Street = model.Street;
+            addressToEdit.ApartmentNumber = model.ApartmentNumber;
+
+            this._db.SaveChanges();
+
+            this._db.Descriptions.Update(descriptionToEdit);
+            this._db.SaveChanges();
+
+            this._db.Apartments.Update(apartmentToEdit);
+            this._db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
         //[HttpPost]
         //public IActionResult Edit(int id)

@@ -7,7 +7,7 @@ namespace RentLodge.Models.ApartnmentViewModels
 {
     public class ApartmentViewModel
     {
-        //public string Id { get; set; }
+        public int ApartmentId { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
         public string ApartmentNumber { get; set; }
@@ -28,7 +28,13 @@ namespace RentLodge.Models.ApartnmentViewModels
         public string AditionalInfo { get; set; }
         public int Guests { get; set; }
 
+        public ApartmentViewModel()
+        {
+
+        }
+
         public ApartmentViewModel(
+                int apartmentId, 
                 string city, 
                 string street, 
                 string apartmentNumber,
@@ -43,6 +49,7 @@ namespace RentLodge.Models.ApartnmentViewModels
                 float rating = 0,
                 bool available = true)
         {
+            ApartmentId = apartmentId;
             City = city;
             Street = street;
             ApartmentNumber = apartmentNumber;

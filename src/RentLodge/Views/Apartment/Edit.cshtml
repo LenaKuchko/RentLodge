@@ -1,4 +1,4 @@
-﻿@model RentLodge.Models.ApartnmentViewModels.ApartmentViewModel
+﻿@model RentLodge.Models.Apartment
 @{
     ViewData["Title"] = "Edit new apartment";
 }
@@ -8,6 +8,12 @@
 <form asp-controller="Apartment" asp-action="Edit" method="post" class="form-horizontal">
     <h4>Edit apartment</h4>
     <hr />
+    <div class="form-group">
+        @*<label asp-for="ApartmentId" type="hidden" class="col-md-2 control-label"></label>*@
+        <div class="col-md-10">
+            <input asp-for="Id" type="hidden" class="form-control" />
+        </div>
+    </div>
     <div class="form-group">
         <label asp-for="Title" class="col-md-2 control-label"></label>
         <div class="col-md-10">
@@ -22,27 +28,69 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="CountryId" class="col-md-2 control-label"></label>
+        <label asp-for="Address.CountryId" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-            <select asp-for="CountryId" asp-items="ViewBag.Countries" class="form-control"></select>
+            <select asp-for="Address.CountryId" asp-items="ViewBag.Countries" class="form-control"></select>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="City" class="col-md-2 control-label"></label>
+        <label asp-for="Address.City" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-            <input asp-for="City" class="form-control" />
+            <input asp-for="Address.City" class="form-control" />
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="Street" class="col-md-2 control-label"></label>
+        <label asp-for="Address.Street" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-            <input asp-for="Street" class="form-control" />
+            <input asp-for="Address.Street" class="form-control" />
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="ApartmentNumber" class="col-md-2 control-label"></label>
+        <label asp-for="Address.ApartmentNumber" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-            <input asp-for="ApartmentNumber" class="form-control" />
+            <input asp-for="Address.ApartmentNumber" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description.Bedrooms" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Description.Bedrooms" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description.Bethrooms" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Description.Bethrooms" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description.Floor" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Description.Floor" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description.AditionalInfo" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Description.AditionalInfo" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description.Guests" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Description.Guests" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Rating" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Rating" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Available" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Available" class="form-control" />
         </div>
     </div>
     <div class="form-group">
