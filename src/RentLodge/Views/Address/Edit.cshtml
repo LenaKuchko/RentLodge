@@ -1,0 +1,65 @@
+﻿@model RentLodge.Models.Address
+<h4>Add address</h4>
+<hr />
+<div class="form-group">
+    <label asp-for="CountryId" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <select asp-for="CountryId" asp-items="ViewBag.Countries" class="form-control"></select>
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="City" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="City" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="Street" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Street" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="ApartmentNumber" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="ApartmentNumber" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+    </div>
+    <div class="edit-address1">Submit</div>
+</div>
+<div id="result"></div>
+
+<script>
+    $('.edit-address1').click(function () {
+        console.log(@Model.Id);
+        @*$.ajax({
+            type: 'GET',
+            dataType: 'html',
+            data: {id: @Model.AddressId},
+            url: '@Url.Action("Edit", "Address")',
+            success: function (result) {
+                $('#display-address-form').html(result);
+            }
+        });*@
+    });
+    $('.edit-address1').click(function () {
+        console.log("@Model.Street");
+        $.ajax({
+            type: 'GET',
+            dataType: 'html',
+            data: { id:@Model.Id,
+                countryId:@Model.CountryId,
+                city:"@Model.City",
+                street:"@Model.Street",
+                apartmentNumber:"@Model.ApartmentNumber" },
+            url: '@Url.Action("Edit", "Address")',
+            success: function (result) {
+                $('#result').html(result);
+            }
+        });
+    });
+
+</script>

@@ -48,14 +48,18 @@ namespace RentLodge.Controllers
 
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             newApartment.UserId = userId;
+
             db.Addresses.Add(Address);
             db.SaveChanges();
+
             db.Descriptions.Add(Description);
             db.SaveChanges();
+
             newApartment.AddressId = Address.Id;
             newApartment.DescriptionId = Description.Id;
             db.Apartments.Add(newApartment);
             db.SaveChanges();
+
             return View("Index", db.Apartments.ToList());
         }
 
@@ -70,6 +74,14 @@ namespace RentLodge.Controllers
             Apartment apartmentToEdit = this._db.Apartments.FirstOrDefault(apartment => apartment.Id == id);
             return View(apartmentToEdit);
         }
+
+        //[HttpPost]
+        //public IActionResult Edit(int id)
+        //{
+        //    Apartment apartmentToEdit = this._db.Apartments.FirstOrDefault(apartment => apartment.Id == id);
+
+        //    return View(apartmentToEdit);
+        //}
 
     }
 }

@@ -1,4 +1,4 @@
-﻿@model RentLodge.Models.ApartnmentViewModels.ApartmentViewModel
+﻿@model RentLodge.Models.Apartment
 @{
     ViewData["Title"] = "Edit new apartment";
 }
@@ -32,9 +32,11 @@
 <script>
 
     $('.edit-address').click(function () {
+        console.log(@Model.Id)
         $.ajax({
             type: 'GET',
             dataType: 'html',
+            data: {id: @Model.AddressId},
             url: '@Url.Action("Edit", "Address")',
             success: function (result) {
                 $('#display-address-form').html(result);
@@ -46,6 +48,7 @@
         $.ajax({
             type: 'GET',
             dataType: 'html',
+            data: {id: @Model.DescriptionId},
             url: '@Url.Action("Edit", "Description")',
             success: function (result) {
                 $('#display-description-form').html(result);

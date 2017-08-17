@@ -30,7 +30,25 @@ namespace RentLodge.Controllers
             return PartialView(addressToDisplay);
         }
 
-        
+        public IActionResult Edit(int id)
+        {
+            Address addressToEdit = db.Addresses.FirstOrDefault(address => address.Id == id);
+            IEnumerable<Country> allCountries = db.Countries.ToList();
+            ViewBag.Countries = new SelectList(allCountries, "Id", "Name");
+            return PartialView(addressToEdit);
+        }
+        [HttpPost]
+        public IActionResult Edit(int id, int countryId, string city,string street, string apartmentNumber)
+        {
+            Address addressToEdit = db.Addresses.FirstOrDefault(address => address.Id == id);
+            addressToEdit.CountryId = countryId;
+            addressToEdit.City = city;
+            addressToEdit.Street = street;
+            addressToEdit.ApartmentNumber = apartmentNumber;
+
+            return PartialView("Edit", addressToEdit);
+        }
+
         //[HttpPost]
         //public IActionResult Create(string countryId, string city, string street, string apartmentNumber)
         //{

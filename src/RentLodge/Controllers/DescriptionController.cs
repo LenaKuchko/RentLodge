@@ -27,8 +27,13 @@ namespace RentLodge.Controllers
         public IActionResult Details(int id)
         {
             Description descriptionToDisplay = db.Descriptions.FirstOrDefault(description => description.Id == id);
-
             return PartialView(descriptionToDisplay);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            Description descriptionToEdit = db.Descriptions.FirstOrDefault(description => description.Id == id);
+            return PartialView(descriptionToEdit);
         }
     }
 }
