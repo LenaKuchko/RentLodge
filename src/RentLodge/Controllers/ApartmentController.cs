@@ -72,25 +72,23 @@ namespace RentLodge.Controllers
        
         public IActionResult Edit(int id)
         {
-            var apartmentToEdit = this._db.Apartments.Include(apartment => apartment.Address).FirstOrDefault(apartment => apartment.Id == id);
-            
-            //var adress = this._db.Addresses.Include(a => a.Id).FirstOrDefault(ap => ap.Id == id);
-            //ApartmentViewModel model = new ApartmentViewModel(
-            //    apartmentToEdit.Address.City, 
-            //    apartmentToEdit.Address.Street,
-            //    apartmentToEdit.Address.ApartmentNumber,
-            //    apartmentToEdit.Address.CountryId,
-            //    apartmentToEdit.Title, apartmentToEdit.Price,
-            //    apartmentToEdit.Description.Bedrooms,
-            //    apartmentToEdit.Description.Bethrooms,
-            //    apartmentToEdit.Description.Floor,
-            //    apartmentToEdit.Description.AditionalInfo,
-            //    apartmentToEdit.Description.Guests, 
-            //    apartmentToEdit.Rating,
-            //    apartmentToEdit.Available);
+            var apartmentToEdit = this._db.Apartments.Include(apartment => apartment.Address).Include(apartment => apartment.Description).FirstOrDefault(apartment => apartment.Id == id);
 
-            //Address addressToEdit = this._db.Addresses.FirstOrDefault(address => address.)
-            return View(apartmentToEdit);
+            ApartmentViewModel model = new ApartmentViewModel(
+                apartmentToEdit.Address.City,
+                apartmentToEdit.Address.Street,
+                apartmentToEdit.Address.ApartmentNumber,
+                apartmentToEdit.Address.CountryId,
+                apartmentToEdit.Title, apartmentToEdit.Price,
+                apartmentToEdit.Description.Bedrooms,
+                apartmentToEdit.Description.Bethrooms,
+                apartmentToEdit.Description.Floor,
+                apartmentToEdit.Description.AditionalInfo,
+                apartmentToEdit.Description.Guests,
+                apartmentToEdit.Rating,
+                apartmentToEdit.Available);
+
+            return View(model);
         }
 
         [HttpPost]
