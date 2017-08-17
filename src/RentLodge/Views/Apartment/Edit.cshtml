@@ -20,6 +20,10 @@
             <input asp-for="Price" class="form-control" />
         </div>
     </div>
+
+    <div class="update-apartment">Update</div>
+
+    <div id="update-result"></div>
     <div class="start-apartment-form">
         <div class="edit-address">Edit address</div>
         <div id="display-address-form"></div>
@@ -30,7 +34,21 @@
 </form>
 
 <script>
-
+    $('.update-apartment').click(function () {
+        console.log("Apartment edit");
+        console.log("@Model.Title");
+        var apTitle = "@Model.Title";
+        $.ajax({
+            dataType: 'html',
+            url: '@Url.Action("Edit")',
+            data: { 'title': apTitle},
+            type: 'POST',
+            contentType: 'application/html',
+            success: function (result) {
+                $('#update-result').html(result);
+            }
+        });
+    });
     $('.edit-address').click(function () {
         console.log(@Model.Id)
         $.ajax({

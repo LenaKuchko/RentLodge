@@ -27,5 +27,35 @@ namespace RentLodge.Models.ApartnmentViewModels
         public string Floor { get; set; }
         public string AditionalInfo { get; set; }
         public int Guests { get; set; }
+
+        public ApartmentViewModel(
+                string city, 
+                string street, 
+                string apartmentNumber,
+                int countryId,
+                string title,
+                int price,
+                int bedrooms,
+                int bathrooms,
+                string floor,
+                string aditionalInfo,
+                int guests,
+                float rating = 0,
+                bool available = true)
+        {
+            City = city;
+            Street = street;
+            ApartmentNumber = apartmentNumber;
+            CountryId = countryId;
+            Title = title;
+            Price = price;
+            Bedrooms = bedrooms;
+            Bathrooms = bathrooms;
+            Floor = floor;
+            AditionalInfo = aditionalInfo;
+            Guests = guests;
+            Rating = rating;
+            Available = available;
+        }
     }
 }

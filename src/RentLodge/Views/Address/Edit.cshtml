@@ -28,12 +28,12 @@
 <div class="form-group">
     <div class="col-md-offset-2 col-md-10">
     </div>
-    <div class="edit-address1">Submit</div>
+    <div class="edit-address">Submit</div>
 </div>
 <div id="result"></div>
 
 <script>
-    $('.edit-address1').click(function () {
+    @*$('.edit-address1').click(function () {
         console.log(@Model.Id);
         @*$.ajax({
             type: 'GET',
@@ -43,21 +43,23 @@
             success: function (result) {
                 $('#display-address-form').html(result);
             }
-        });*@
-    });
-    $('.edit-address1').click(function () {
+        });
+    });*@
+    $('.edit-address').click(function () {
         console.log("@Model.Street");
         $.ajax({
             type: 'GET',
-            dataType: 'html',
+            dataType: 'json',
+            url: '@Url.Action("Edit", "Address")',
             data: { id:@Model.Id,
                 countryId:@Model.CountryId,
                 city:"@Model.City",
                 street:"@Model.Street",
                 apartmentNumber:"@Model.ApartmentNumber" },
-            url: '@Url.Action("Edit", "Address")',
             success: function (result) {
-                $('#result').html(result);
+                console.log(result);
+                var resultString = result.city;
+                $('#result').html(resultString);
             }
         });
     });

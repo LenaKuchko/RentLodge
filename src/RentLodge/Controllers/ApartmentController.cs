@@ -8,6 +8,7 @@ using RentLodge.Models.ApartnmentViewModels;
 using RentLodge.Data;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace RentLodge.Controllers
 {
@@ -71,10 +72,34 @@ namespace RentLodge.Controllers
        
         public IActionResult Edit(int id)
         {
-            Apartment apartmentToEdit = this._db.Apartments.FirstOrDefault(apartment => apartment.Id == id);
+            var apartmentToEdit = this._db.Apartments.Include(apartment => apartment.Address).FirstOrDefault(apartment => apartment.Id == id);
+            
+            //var adress = this._db.Addresses.Include(a => a.Id).FirstOrDefault(ap => ap.Id == id);
+            //ApartmentViewModel model = new ApartmentViewModel(
+            //    apartmentToEdit.Address.City, 
+            //    apartmentToEdit.Address.Street,
+            //    apartmentToEdit.Address.ApartmentNumber,
+            //    apartmentToEdit.Address.CountryId,
+            //    apartmentToEdit.Title, apartmentToEdit.Price,
+            //    apartmentToEdit.Description.Bedrooms,
+            //    apartmentToEdit.Description.Bethrooms,
+            //    apartmentToEdit.Description.Floor,
+            //    apartmentToEdit.Description.AditionalInfo,
+            //    apartmentToEdit.Description.Guests, 
+            //    apartmentToEdit.Rating,
+            //    apartmentToEdit.Available);
+
+            //Address addressToEdit = this._db.Addresses.FirstOrDefault(address => address.)
             return View(apartmentToEdit);
         }
 
+        [HttpPost]
+        public IActionResult Edit(int id, string title)
+        {
+            Apartment apartmentToEdit = this._db.Apartments.FirstOrDefault(apartment => apartment.Id == id);
+            apartmentToEdit.Title = title;
+            return View(apartmentToEdit);
+        }
         //[HttpPost]
         //public IActionResult Edit(int id)
         //{

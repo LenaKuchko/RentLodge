@@ -17,9 +17,9 @@ namespace RentLodge.Models
         public float Rating { get; set; }
         public int Price { get; set; }
         public int AddressId { get; set; }
-        //public Address Address { get; set; }
+        public virtual Address Address { get; set; }
         public int DescriptionId { get; set; }
-        //public Description Description { get; set; }
+        public virtual Description Description { get; set; }
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
 

@@ -46,7 +46,8 @@ namespace RentLodge.Controllers
             addressToEdit.Street = street;
             addressToEdit.ApartmentNumber = apartmentNumber;
 
-            return PartialView("Edit", addressToEdit);
+
+            return Json(addressToEdit);
         }
 
         //[HttpPost]
