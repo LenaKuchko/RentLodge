@@ -1,0 +1,6 @@
+﻿@model RentLodge.Models.Apartment
+<h2>You are about to delete @Model.Title apartment</h2>
+<form asp-controller="Apartment" asp-action="Delete" method="post" class="form-horizontal">
+    @*<input asp-for="Id" type="hidden" class="form-control" />*@
+    <button type="submit" class="btn btn-default">Delete</button>
+</form>

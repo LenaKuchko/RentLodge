@@ -37,31 +37,5 @@ namespace RentLodge.Controllers
             ViewBag.Countries = new SelectList(allCountries, "Id", "Name");
             return PartialView(addressToEdit);
         }
-        [HttpPost]
-        public IActionResult Edit(int id, int countryId, string city,string street, string apartmentNumber)
-        {
-            Address addressToEdit = db.Addresses.FirstOrDefault(address => address.Id == id);
-            addressToEdit.CountryId = countryId;
-            addressToEdit.City = city;
-            addressToEdit.Street = street;
-            addressToEdit.ApartmentNumber = apartmentNumber;
-
-
-            return Json(addressToEdit);
-        }
-
-        //[HttpPost]
-        //public IActionResult Create(string countryId, string city, string street, string apartmentNumber)
-        //{
-        //    Address newAddress = new Address(countryId, city, street, apartmentNumber);
-
-        //    return RedirectToAction("Create", "Apartment");
-        //}
-        //[HttpPost]
-        //public IActionResult Create(ApartmentViewModel model)
-        //{
-        //    Address newAddress = new Address(model.CountryId, model.City, model.Street, model.ApartmentNumber);
-        //    return RedirectToAction("Create", "Apartment");
-        //}
     }
 }
