@@ -8,9 +8,10 @@ using RentLodge.Data;
 namespace RentLodge.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170819213054_AddReservationTable")]
+    partial class AddReservationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -270,8 +271,6 @@ namespace RentLodge.Migrations
                     b.Property<int?>("ApartmentId");
 
                     b.Property<string>("GuestId");
-
-                    b.Property<int>("GuestsNumber");
 
                     b.Property<DateTime>("MoveIn");
 

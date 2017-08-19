@@ -2,18 +2,25 @@
 @{
     ViewData["Title"] = "Details";
 }
+<div>
+    <form asp-controller="Reservation" asp-action="Create" method="post">
+        <input asp-for="Id" type="hidden"/>
+        <input asp-for="UserId" type="hidden" />
 
-    <h4>Apartment</h4>
-    <hr />
+        <h4>Apartment</h4>
+        <hr />
         <h2>@Html.DisplayNameFor(modelItem => modelItem.Price) : @Html.DisplayFor(modelItem => modelItem.Price)</h2>
         <h2>@Html.DisplayNameFor(modelItem => modelItem.Title) : @Html.DisplayFor(modelItem => modelItem.Title)</h2>
 
-    <div id="PartialDescription"></div>
-    <div id="PartialAddress"></div>
+        <div id="PartialDescription"></div>
+        <div id="PartialAddress"></div>
 
-
-
-    <script type="text/javascript">
+        <button type="submit" class="btn btn-default">Rent
+        </button>
+    </form>
+</div>
+    
+<script type="text/javascript">
     $(document).ready(function () {
         $.ajax({
                 dataType: 'html',
@@ -37,8 +44,4 @@
             }
         });
     });
-
-        //$(document).ready(function () {
-           
-        //});
-    </script>
+</script>

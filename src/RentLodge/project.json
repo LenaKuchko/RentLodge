@@ -45,7 +45,8 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "twitter-bootstrap-wizard": "1.2.2"
+    "twitter-bootstrap-wizard": "1.2.2",
+    "Microsoft.AspNetCore.Session": "1.0.0"
   },
 
   "tools": {

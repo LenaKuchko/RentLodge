@@ -8,6 +8,7 @@ using RentLodge.Models;
 using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RentLodge.Models.ApartnmentViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace RentLodge.Controllers
 {
@@ -26,7 +27,7 @@ namespace RentLodge.Controllers
 
         public IActionResult Details(int id)
         {
-            Address addressToDisplay = db.Addresses.FirstOrDefault(address => address.Id == id);
+            Address addressToDisplay = db.Addresses.Include(address => address.Country).FirstOrDefault(address => address.Id == id);
             return PartialView(addressToDisplay);
         }
 

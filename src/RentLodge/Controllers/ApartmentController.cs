@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Http;
 
 namespace RentLodge.Controllers
 {
@@ -28,6 +29,7 @@ namespace RentLodge.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+            HttpContext.Session.SetString("name", "Tom");
             ApplicationDbContext db = new ApplicationDbContext();
             return View(db.Apartments.ToList());
         }
@@ -106,10 +108,14 @@ namespace RentLodge.Controllers
                 .Include(apartment => apartment.Description)
                 .FirstOrDefault(apartment => apartment.Id == id);
 
+            Address addresToDelete = apartmentToDelete.Address;
+            Description descriptionToDelete = apartmentToDelete.Description;
             
-
-            this._db.Remove(apartmentToDelete);
+            this._db.Remove(addresToDelete);
             this._db.SaveChanges();
+            this._db.Remove(descriptionToDelete);
+            this._db.SaveChanges();
+            
             return RedirectToAction("Index");
         }
     }
