@@ -7,7 +7,8 @@ namespace RentLodge.Models.SearchViewModels
 {
     public class SearchViewModel
     {
-        public string Location { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
         public DateTime MoveIn { get; set; }
         public DateTime MoveOut { get; set; }
     }

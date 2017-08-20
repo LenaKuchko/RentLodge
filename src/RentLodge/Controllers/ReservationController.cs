@@ -28,10 +28,21 @@ namespace RentLodge.Controllers
             return View();
         }
 
+        public IActionResult Create()
+        {
+            var moveIn = HttpContext.Session.GetString("MoveIn");
+            var moveOut = HttpContext.Session.GetString("MoveOut");
+            ViewBag.moveIn = moveIn;
+            ViewBag.moveOut = moveOut;
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Create(int id)
         {
-            //var test = HttpContext.Session.GetString("name");
+            var moveIn = HttpContext.Session.GetString("MoveIn");
+            var moveOut = HttpContext.Session.GetString("MoveOut");
+
             Apartment apartmentToReserve = this._db.Apartments
                 .Include(apartment => apartment.Address)
                 .Include(apartment => apartment.Description)
