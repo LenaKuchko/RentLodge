@@ -8,6 +8,8 @@ using RentLodge.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
+using System.Globalization;
 
 namespace RentLodge.Controllers
 {
@@ -47,6 +49,18 @@ namespace RentLodge.Controllers
                 .Include(apartment => apartment.Address)
                 .Include(apartment => apartment.Description)
                 .FirstOrDefault(apartment => apartment.Id == id);
+
+            var guestId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            Reservation newReservation = new Reservation {
+                OwnerId = apartmentToReserve.UserId,
+                GuestId = guestId,
+                ApartmentId = apartmentToReserve.Id,
+                MoveIn = DateTime.ParseExact(moveIn),
+                MoveOut = Convert.ToDateTime(moveOut)};
+
+            this._db.Reservation.Add(newReservation);
+            this._db.SaveChanges();
             return View();
         }
     }

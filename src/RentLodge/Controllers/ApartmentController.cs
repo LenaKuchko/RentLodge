@@ -33,8 +33,8 @@ namespace RentLodge.Controllers
         {
             ApplicationDbContext db = new ApplicationDbContext();
 
-            var moveIn = model.MoveIn.ToString("yyyyMMdd");
-            var moveOut = model.MoveOut.ToString("yyyyMMdd");
+            var moveIn = model.MoveIn.ToString("yyyy/MM/dd");
+            var moveOut = model.MoveOut.ToString("yyyy/MM/dd");
 
             HttpContext.Session.SetString("MoveIn", moveIn);
             HttpContext.Session.SetString("MoveOut", moveOut);
@@ -46,14 +46,23 @@ namespace RentLodge.Controllers
             SqlParameter cityParam = new SqlParameter("@city", model.City);
             SqlParameter countryParam = new SqlParameter("@country", model.Country);
 
+            //тернарный
             if (cityParam.Value != null)
             {
                 city = " AND Addresses.City = @city";
+            }
+            else
+            {
+                cityParam.Value = "";
             }
 
             if (countryParam.Value != null)
             {
                 country = " AND Countries.Name = @country";
+            }
+            else
+            {
+                countryParam.Value = "";
             }
 
             SqlParameter moveInParam = new SqlParameter("@moveIn", moveIn);
