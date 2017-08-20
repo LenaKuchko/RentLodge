@@ -39,38 +39,42 @@ namespace RentLodge.Controllers
             HttpContext.Session.SetString("MoveIn", moveIn);
             HttpContext.Session.SetString("MoveOut", moveOut);
 
-            string cityParam = "";
-            string countryParam = "";
+            string city = "";
+            string country = "";
 
-            //SqlParameter city = new SqlParameter("@city", model.City);
-            //SqlParameter country = new SqlParameter("@city", model.Country);
 
-            SqlParameter city = new SqlParameter("@city", "Poltava");
-            SqlParameter country = new SqlParameter("@city", "Ukraine");
+            SqlParameter cityParam = new SqlParameter("@city", model.City);
+            SqlParameter countryParam = new SqlParameter("@country", model.Country);
 
-            if (city.Value != null)
+            if (cityParam.Value != null)
             {
-                cityParam = " AND Addresses.City = " + city.Value;
+                city = " AND Addresses.City = @city";
             }
 
-            if (country.Value != null)
+            if (countryParam.Value != null)
             {
-                countryParam = " AND Countries.Name = " + country.Value;
+                country = " AND Countries.Name = @country";
             }
 
-            string query = "SELECT * FROM Apartments " +
+            SqlParameter moveInParam = new SqlParameter("@moveIn", moveIn);
+            var a = moveInParam.Value;
+            SqlParameter moveOutParam = new SqlParameter("@moveOut", moveOut);
+            var parameters = new SqlParameter[] { moveInParam, moveOutParam, cityParam, countryParam };
+
+            string query = "SELECT Apartments.* FROM Apartments " +
                 "JOIN Addresses ON (Apartments.AddressId = Addresses.Id) " +
                 "JOIN Countries ON (Addresses.CountryId = Countries.Id) " +
+
                 "WHERE Apartments.Id not in " +
-                "(SELECT reservation.ApartmentId FROM Reservation reservation) " +
-                "WHERE (reservation.MoveIn <= " + moveIn + " AND reservation.MoveOut >= " + moveIn + ") " +
-                "OR (reservation.MoveIn <= " + moveOut + " AND reservation.MoveOut >= " + moveOut + ") " +
-                "OR (reservation.MoveIn >= " + moveIn + " AND reservation.MoveIn <= " + moveOut + ")" + cityParam + countryParam +
-                " GROUP BY reservation.ApartmentId)";
+                "(SELECT reservation.ApartmentId FROM Reservation reservation " +
+                "WHERE (reservation.MoveIn <= @moveIn AND reservation.MoveOut >= @moveOut) " +
+                "OR (reservation.MoveIn <= @moveIn AND reservation.MoveOut >= @moveOut) " +
+                "OR (reservation.MoveIn >= @moveIn AND reservation.MoveIn <= @moveIn) GROUP BY reservation.ApartmentId)" + city + country;
 
-            var apartments = db.Apartments.FromSql(query).ToList();
+            var ap = db.Addresses.FromSql("Select a.* From Addresses a join Countries c on a.countryId=c.id where a.City = @city", new SqlParameter[] { new SqlParameter("@city", "Poltava") }).ToList();
+            var apartments = db.Apartments.FromSql(query, parameters).ToList();
 
-            return View();
+            return View(apartments);
         }
 
         public IActionResult Create() => View();
