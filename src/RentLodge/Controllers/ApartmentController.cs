@@ -33,7 +33,7 @@ namespace RentLodge.Controllers
             HttpContext.Session.SetString("MoveIn", model.MoveIn.ToString());
             HttpContext.Session.SetString("MoveOut", model.MoveOut.ToString());
 
-            return View(this._db.Apartments.ToList());
+            return View(this._db.Apartments.Where(apartment => apartment.Address.City == model.Location).ToList());
         }
 
         public IActionResult Create() => View();
