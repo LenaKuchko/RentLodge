@@ -11,6 +11,7 @@ using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Http;
+using RentLodge.Models.SearchViewModels;
 
 namespace RentLodge.Controllers
 {
@@ -27,11 +28,12 @@ namespace RentLodge.Controllers
             _db = db;
         }
         // GET: /<controller>/
-        public IActionResult Index()
+        public IActionResult Index(SearchViewModel model)
         {
-            HttpContext.Session.SetString("name", "Tom");
-            ApplicationDbContext db = new ApplicationDbContext();
-            return View(db.Apartments.ToList());
+            HttpContext.Session.SetString("MoveIn", model.MoveIn.ToString());
+            HttpContext.Session.SetString("MoveOut", model.MoveOut.ToString());
+
+            return View(this._db.Apartments.ToList());
         }
 
         public IActionResult Create() => View();

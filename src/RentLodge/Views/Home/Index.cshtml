@@ -1,7 +1,26 @@
-﻿@{
+﻿@model RentLodge.Models.SearchViewModels.SearchViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
-<form asp-controller="Home" asp-action="Index">
-
+<form asp-controller="Apartment" asp-action="Index">
+    <div class="form-group">
+        <label asp-for="Location" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Location" class="form-control"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="MoveIn" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="MoveIn" type="date" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="MoveOut" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="MoveOut" type="date" class="form-control" />
+        </div>
+    </div>
+    <button>Search</button>
 </form>
 

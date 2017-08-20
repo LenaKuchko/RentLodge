@@ -31,7 +31,7 @@ namespace RentLodge.Controllers
         [HttpPost]
         public IActionResult Create(int id)
         {
-            var test = HttpContext.Session.GetString("name");
+            //var test = HttpContext.Session.GetString("name");
             Apartment apartmentToReserve = this._db.Apartments
                 .Include(apartment => apartment.Address)
                 .Include(apartment => apartment.Description)

@@ -272,6 +272,7 @@ C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Models\ManageViewModels\ManageLog
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Models\ManageViewModels\RemoveLoginViewModel.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Models\ManageViewModels\SetPasswordViewModel.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Models\ManageViewModels\VerifyPhoneNumberViewModel.cs
+C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Models\SearchViewModels\SearchViewModel.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Services\IEmailSender.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Services\ISmsSender.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Services\MessageServices.cs
