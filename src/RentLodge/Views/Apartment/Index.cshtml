@@ -4,17 +4,22 @@
 }
 
 <h2>@ViewData["Title"].</h2>
+<div class="row">
+    <div class="col-md-8"  id="" style="overflow-y: scroll; height:70vh;">
+        <form asp-controller="Apartment" asp-action="Index" class="form-horizontal">
+            <h4>All apartments</h4>
+            <hr />
+            @foreach (var item in Model)
+            {
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id });
 
-<form asp-controller="Apartment" asp-action="Index" class="form-horizontal">
-    <h4>All apartments</h4>
-    <hr />
-    @foreach (var item in Model)
-    {
-        @Html.ActionLink("Details", "Details", new { id = item.Id })
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id });
-        
-        <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
-    }
-   
-</form>
+                <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+            }
+
+        </form>
+    </div>
+    <div id="map" class="col-md-4" style="height:400px;">
+    </div>
+ </div>

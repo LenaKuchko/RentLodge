@@ -56,7 +56,7 @@ namespace RentLodge.Controllers
                 OwnerId = apartmentToReserve.UserId,
                 GuestId = guestId,
                 ApartmentId = apartmentToReserve.Id,
-                MoveIn = DateTime.ParseExact(moveIn),
+                MoveIn = Convert.ToDateTime(moveIn),
                 MoveOut = Convert.ToDateTime(moveOut)};
 
             this._db.Reservation.Add(newReservation);
