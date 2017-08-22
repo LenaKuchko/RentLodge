@@ -83,7 +83,7 @@ namespace RentLodge.Controllers
 
             var ap = db.Addresses.FromSql("Select a.* From Addresses a join Countries c on a.countryId=c.id where a.City = @city", new SqlParameter[] { new SqlParameter("@city", "Poltava") }).ToList();
             var apartments = db.Apartments.FromSql(query, parameters).Include(apart => apart.Address).ToList();
-            apartments[0].GetLatLong();
+            apartments[0].GetCoords("Paris");
             return View(apartments);
         }
 

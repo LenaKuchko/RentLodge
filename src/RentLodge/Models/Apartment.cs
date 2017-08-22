@@ -51,18 +51,37 @@ namespace RentLodge.Models
             Available = available;
         }
 
-        public async void GetLatLong()
+        public List<double> GetCoords(string search)
         {
-            HttpClient client = new HttpClient();
+            List<double> coords = new List<double>();
+            var client = new RestClient("https://maps.googleapis.com/maps/api/geocode");
+            var request = new RestRequest("json?address=" + search + "&key=" + EnvironmentVariables.GeocoderKey);
 
-            string url = "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAOo96lCYLFG7nXjgxzD_YuljYOu850JcU";
+            var response = new RestResponse();
 
-            var response = await client.GetAsync(url);
-            string result = await response.Content.ReadAsStringAsync();
+            Task.Run(async () =>
+                {
+                    response = await GetResponseContentAsync(client, request) as RestResponse;
+                }).Wait();
 
-            JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+            JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(response.Content);
 
-            var lat = JsonConvert.DeserializeObject<string>(jsonResponse["location"].ToString());
+            coords.Add(JsonConvert.DeserializeObject<double>(jsonResponse["results"][0]["geometry"]["location"]["lat"].ToString()));
+            coords.Add(JsonConvert.DeserializeObject<double>(jsonResponse["results"][0]["geometry"]["location"]["lng"].ToString()));
+
+            return coords;
+
+
+            //HttpClient client = new HttpClient();
+
+            //string url = "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAOo96lCYLFG7nXjgxzD_YuljYOu850JcU";
+
+            //var response = await client.GetAsync(url);
+            //string result = await response.Content.ReadAsStringAsync();
+
+            //JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+
+            //var lat = JsonConvert.DeserializeObject<string>(jsonResponse["location"].ToString());
             //var client = new RestClient("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAOo96lCYLFG7nXjgxzD_YuljYOu850JcU");
             //var request = new RestRequest();
             ////client.Authenticator = new HttpBasicAuthenticator("AIzaSyAOo96lCYLFG7nXjgxzD_YuljYOu850JcU", "");
@@ -82,10 +101,18 @@ namespace RentLodge.Models
 
 
         }
-
-        private Task<RestResponse> GetResponseContentAsync(RestClient client, RestRequest request)
+        public static Task<IRestResponse> GetResponseContentAsync(RestClient theClient, RestRequest theRequest)
         {
-            throw new NotImplementedException();
+            var tcs = new TaskCompletionSource<IRestResponse>();
+            theClient.ExecuteAsync(theRequest, response => {
+                tcs.SetResult(response);
+            });
+            return tcs.Task;
         }
+
+        //private Task<RestResponse> GetResponseContentAsync(RestClient client, RestRequest request)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

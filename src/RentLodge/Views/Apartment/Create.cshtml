@@ -8,30 +8,44 @@
 <form asp-controller="Apartment" asp-action="Create" method="post" class="form-horizontal">
     <h4>Add new apartment</h4>
     <hr />
-    <div class="form-group">
-        <label asp-for="Title" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Title" class="form-control"/>
+    <div class="add-head">Header</div>
+    <div id="apt-head">
+        <div class="form-group">
+            <label asp-for="Title" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Title" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Price" class="form-control" />
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <label asp-for="Price" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Price" class="form-control" />
-        </div>
-    </div>
+    
     <div class="start-apartment-form">
-        <div class="add-address">Add address</div>
+        <div class="add-address">Addres</div>
         <div id="display-address-form"></div>
-        <div class="add-description">Add description</div>
+        <div class="add-description">Description</div>
         <div id="display-description-form"></div>
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
 
 <script>
+    //$(document).ready(function () {
+    //    $('#apt-head').show(400);
+    //});
+
+    $('.add-head').click(function myfunction() {
+        $('#apt-head').toggle(400);
+    });
 
     $('.add-address').click(function () {
+
+        $('#display-address-form').toggle(400);
+       
         $.ajax({
             type: 'GET',
             dataType: 'html',
@@ -43,6 +57,7 @@
     });
 
     $('.add-description').click(function () {
+        $('#display-description-form').toggle(400);
         $.ajax({
             type: 'GET',
             dataType: 'html',

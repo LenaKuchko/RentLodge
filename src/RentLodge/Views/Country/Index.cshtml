@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Country>
+<h2>List of countries</h2>
+<div>
+    <ul>
+        @foreach(var item in Model)
+        {
+            <li>@item.Name</li>
+        }
+    </ul>
+</div>

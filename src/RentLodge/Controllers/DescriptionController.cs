@@ -15,7 +15,7 @@ namespace RentLodge.Controllers
         // GET: /<controller>/
         public IActionResult Index() => View();
 
-        public IActionResult Create() => View();
+        public IActionResult Create() => PartialView();
 
         [HttpPost]
         public IActionResult Create(int bedrooms, int bathrooms, string floor, string aditionalInfo, int guests)
