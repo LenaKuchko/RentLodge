@@ -51,9 +51,9 @@ namespace RentLodge.Models
             Available = available;
         }
 
-        public List<double> GetCoords(string search)
+        public List<object> GetCoords(string search)
         {
-            List<double> coords = new List<double>();
+            List<object> coords = new List<object>();
             var client = new RestClient("https://maps.googleapis.com/maps/api/geocode");
             var request = new RestRequest("json?address=" + search + "&key=" + EnvironmentVariables.GeocoderKey);
 
@@ -68,6 +68,7 @@ namespace RentLodge.Models
 
             coords.Add(JsonConvert.DeserializeObject<double>(jsonResponse["results"][0]["geometry"]["location"]["lat"].ToString()));
             coords.Add(JsonConvert.DeserializeObject<double>(jsonResponse["results"][0]["geometry"]["location"]["lng"].ToString()));
+            coords.Add(this.Price);
 
             return coords;
 
@@ -98,9 +99,8 @@ namespace RentLodge.Models
             //string latitude = "";
             //string longitude = "";
 
-
-
         }
+
         public static Task<IRestResponse> GetResponseContentAsync(RestClient theClient, RestRequest theRequest)
         {
             var tcs = new TaskCompletionSource<IRestResponse>();
@@ -110,9 +110,20 @@ namespace RentLodge.Models
             return tcs.Task;
         }
 
-        //private Task<RestResponse> GetResponseContentAsync(RestClient client, RestRequest request)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public static List<object> GetMarkers(List<Apartment> apartments)
+        {
+            List<object> markers = new List<object>();
+            for (int i = 0; i < apartments.Count; i++)
+            {
+                markers.Add(apartments[i].GetCoords(apartments[i].GetAddress()));
+            }
+            return markers;
+        }
+
+        public string GetAddress()
+        {
+            return this.Address.Street + this.Address.City + this.Address.Country;
+        }
+        
     }
 }

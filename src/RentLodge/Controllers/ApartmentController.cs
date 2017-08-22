@@ -81,9 +81,11 @@ namespace RentLodge.Controllers
                 "OR (reservation.MoveIn <= @moveIn AND reservation.MoveOut >= @moveOut) " +
                 "OR (reservation.MoveIn >= @moveIn AND reservation.MoveIn <= @moveIn) GROUP BY reservation.ApartmentId)" + city + country;
 
-            var ap = db.Addresses.FromSql("Select a.* From Addresses a join Countries c on a.countryId=c.id where a.City = @city", new SqlParameter[] { new SqlParameter("@city", "Poltava") }).ToList();
+ 
             var apartments = db.Apartments.FromSql(query, parameters).Include(apart => apart.Address).ToList();
-            apartments[0].GetCoords("Paris");
+
+
+            ViewData["markers"] = Apartment.GetMarkers(apartments);
             return View(apartments);
         }
 
