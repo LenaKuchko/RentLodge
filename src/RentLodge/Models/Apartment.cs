@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,10 +25,7 @@ namespace RentLodge.Models
         public ApplicationUser User { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; }
 
-        public Apartment()
-        {
-
-        }
+        public Apartment() { }
         public Apartment(
             
             string title,
@@ -47,6 +45,15 @@ namespace RentLodge.Models
             Price = price;
             Rating = rating;
             Available = available;
+        }
+
+        public void GetLatLong()
+        {
+            string latitude = "";
+            string longitude = "";
+            var response = JsonConvert.SerializeObject(https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAOo96lCYLFG7nXjgxzD_YuljYOu850JcU);
+
+
         }
     }
 }
