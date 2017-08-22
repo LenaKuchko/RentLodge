@@ -1,9 +1,13 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using RestSharp;
+using RestSharp.Authenticators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace RentLodge.Models
@@ -47,13 +51,41 @@ namespace RentLodge.Models
             Available = available;
         }
 
-        public void GetLatLong()
+        public async void GetLatLong()
         {
-            string latitude = "";
-            string longitude = "";
-            var response = JsonConvert.SerializeObject(https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAOo96lCYLFG7nXjgxzD_YuljYOu850JcU);
+            HttpClient client = new HttpClient();
+
+            string url = "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAOo96lCYLFG7nXjgxzD_YuljYOu850JcU";
+
+            var response = await client.GetAsync(url);
+            string result = await response.Content.ReadAsStringAsync();
+
+            JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+
+            var lat = JsonConvert.DeserializeObject<string>(jsonResponse["location"].ToString());
+            //var client = new RestClient("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAOo96lCYLFG7nXjgxzD_YuljYOu850JcU");
+            //var request = new RestRequest();
+            ////client.Authenticator = new HttpBasicAuthenticator("AIzaSyAOo96lCYLFG7nXjgxzD_YuljYOu850JcU", "");
+
+            //var response = new RestResponse();
+
+            //Task.Run(async () =>
+            //{
+            //    response = await GetResponseContentAsync(client, request) as RestResponse;
+            //}).Wait();
+
+            //JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(response.Content);
+
+            //string latitude = "";
+            //string longitude = "";
 
 
+
+        }
+
+        private Task<RestResponse> GetResponseContentAsync(RestClient client, RestRequest request)
+        {
+            throw new NotImplementedException();
         }
     }
 }

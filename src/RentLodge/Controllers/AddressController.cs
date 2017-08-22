@@ -22,7 +22,7 @@ namespace RentLodge.Controllers
         {
             IEnumerable<Country> allCountries = db.Countries.ToList();
             ViewBag.Countries = new SelectList(allCountries, "Id", "Name");
-                return View();
+                return PartialView();
         }
 
         public IActionResult Details(int id)

@@ -70,19 +70,20 @@ namespace RentLodge.Controllers
             SqlParameter moveOutParam = new SqlParameter("@moveOut", moveOut);
             var parameters = new SqlParameter[] { moveInParam, moveOutParam, cityParam, countryParam };
 
-            string query = "SELECT Apartments.* FROM Apartments " +
-                "JOIN Addresses ON (Apartments.AddressId = Addresses.Id) " +
-                "JOIN Countries ON (Addresses.CountryId = Countries.Id) " +
+            string query = "SELECT ap.Id, ap.AddressId, ap.Available, ap.DescriptionId, ap.Price, ap.Rating, ap.Title, ap.UserId, " +
+                "ad.Id AS AdId, ad.ApartmentNumber, ad.City, ad.CountryId, ad.Street FROM Apartments ap " +
+                "JOIN Addresses ad ON (ap.AddressId = ad.Id) " +
+                "JOIN Countries ON (ad.CountryId = Countries.Id) " +
 
-                "WHERE Apartments.Id not in " +
+                "WHERE ap.Id not in " +
                 "(SELECT reservation.ApartmentId FROM Reservation reservation " +
                 "WHERE (reservation.MoveIn <= @moveIn AND reservation.MoveOut >= @moveOut) " +
                 "OR (reservation.MoveIn <= @moveIn AND reservation.MoveOut >= @moveOut) " +
                 "OR (reservation.MoveIn >= @moveIn AND reservation.MoveIn <= @moveIn) GROUP BY reservation.ApartmentId)" + city + country;
 
             var ap = db.Addresses.FromSql("Select a.* From Addresses a join Countries c on a.countryId=c.id where a.City = @city", new SqlParameter[] { new SqlParameter("@city", "Poltava") }).ToList();
-            var apartments = db.Apartments.FromSql(query, parameters).ToList();
-
+            var apartments = db.Apartments.FromSql(query, parameters).Include(apart => apart.Address).ToList();
+            apartments[0].GetLatLong();
             return View(apartments);
         }
 
