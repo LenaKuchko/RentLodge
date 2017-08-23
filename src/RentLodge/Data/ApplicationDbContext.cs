@@ -28,7 +28,7 @@ namespace RentLodge.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=RentLodge;integrated security=True");
+            options.UseSqlServer(@"Server=DESKTOP-6CVACGR\SQLEXPRESS;Database=RentLodge;integrated security=True");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

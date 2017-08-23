@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Http;
 using RentLodge.Models.SearchViewModels;
 using System.Data.SqlClient;
+using Newtonsoft.Json;
 
 namespace RentLodge.Controllers
 {
@@ -85,7 +86,11 @@ namespace RentLodge.Controllers
             var apartments = db.Apartments.FromSql(query, parameters).Include(apart => apart.Address).ToList();
 
 
-            ViewData["markers"] = Apartment.GetMarkers(apartments);
+            //ViewBag.Markers = Apartment.GetMarkers(apartments);
+
+            var json = JsonConvert.SerializeObject(Apartment.GetMarkers(apartments));
+            ViewBag.Markers = json;
+
             return View(apartments);
         }
 

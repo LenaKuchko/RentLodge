@@ -3,9 +3,7 @@
     ViewData["Title"] = "List of all apartments";
 }
 
-@{
-    var markers = ViewData["Markers"];
-}
+
 <div class="row">
     <div class="col-md-8"  id="" style="overflow-y: scroll; height:70vh;">
         <form asp-controller="Apartment" asp-action="Index" class="form-horizontal">
@@ -25,27 +23,17 @@
     <div id="map" class="col-md-4" style="height:500px;">
     </div>
  </div>
-<script>
-      //function initMap() {
-      //  var uluru = {lat: -25.363, lng: 131.044};
-      //  var map = new google.maps.Map(document.getElementById('map'), {
-      //    zoom: 4,
-      //    center: uluru
-      //  });
-      //  var marker = new google.maps.Marker({
-      //    position: uluru,
-      //    map: map
-      //  });
-      //}
-</script>
+
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8T9J_Db4_FYC_ogOhXHmEFLb423pktZk&callback=initMap">
 </script>
 <script type="text/javascript">
-   
     function initMap()
     {
-        
+        console.log("@ViewBag.Markers");
+
+        var locations = JSON.parse("@ViewBag.Markers");
+        console.log(locations);
 
         //var locations = [
         // ['Bondi Beach', -33.890542, 151.274856, 4],
@@ -64,21 +52,24 @@
 
         var marker, i;
 
-        for (i = 0; i < markers.length; i++) {
+        for (i = 0; i < locations.length; i++) {
             marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                position: new google.maps.LatLng(locations[i][0], locations[i][1]),
                 map: map
             });
+            console.log(locations[i][0]);
+            console.log(locations[i][1]);
+            //console.log(marker);
 
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                 return function () {
-                    infowindow.setContent(locations[i][0]);
+                    infowindow.setContent(locations[i][2]);//convert to string
                     infowindow.open(map, marker);
                 }
             })(marker, i));
         }
     }
-   
 
-    
+
+
 </script>

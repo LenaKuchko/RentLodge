@@ -113,8 +113,9 @@ namespace RentLodge.Models
         public static List<object> GetMarkers(List<Apartment> apartments)
         {
             List<object> markers = new List<object>();
+
             for (int i = 0; i < apartments.Count; i++)
-            {
+            { 
                 markers.Add(apartments[i].GetCoords(apartments[i].GetAddress()));
             }
             return markers;
