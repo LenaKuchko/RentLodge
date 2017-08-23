@@ -28,8 +28,7 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8T9J_Db4_FYC_ogOhXHmEFLb423pktZk&callback=initMap">
 </script>
 <script type="text/javascript">
-    function initMap()
-    {
+    function initMap() {
         console.log("@ViewBag.Markers");
 
         var locations = JSON.parse("@ViewBag.Markers");
@@ -42,34 +41,67 @@
         // ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
         // ['Maroubra Beach', -33.950198, 151.259302, 1]
         //];
+        //var map = new google.maps.Map(document.getElementById('map'), {
+        //    zoom: 10,
+        //    center: new google.maps.LatLng(-33.92, 151.25),
+        //    mapTypeId: google.maps.MapTypeId.ROADMAP
+        //});
+
+        //var infowindow = new google.maps.InfoWindow();
+
+        //var marker, i;
+
+        //for (i = 0; i < locations.length; i++) {
+        //    marker = new google.maps.Marker({
+        //        position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+        //        map: map
+        //    });
+        //    console.log(locations[i][0]);
+        //    console.log(locations[i][1]);
+        //    //console.log(marker);
+
+        //    google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
+        //        return function () {
+        //            infowindow.setContent(String(locations[i][2]));
+        //            infowindow.open(map, marker);
+        //        }
+        //    })(marker, i));
+        //}
+
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 10,
             center: new google.maps.LatLng(-33.92, 151.25),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
 
+        var bounds = new google.maps.LatLngBounds();
         var infowindow = new google.maps.InfoWindow();
 
-        var marker, i;
-
         for (i = 0; i < locations.length; i++) {
-            marker = new google.maps.Marker({
+            console.log(locations.length)
+            var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locations[i][0], locations[i][1]),
                 map: map
             });
-            console.log(locations[i][0]);
-            console.log(locations[i][1]);
-            //console.log(marker);
+
+
+            bounds.extend(marker.position);
+            console.log(locations.length)
 
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                 return function () {
-                    infowindow.setContent(locations[i][2]);//convert to string
+                    console.log(locations.length)
+
+                    infowindow.setContent(locations[i][0]);
                     infowindow.open(map, marker);
                 }
             })(marker, i));
         }
+
+        map.fitBounds(bounds);
+        var listener = google.maps.event.addListener(map, "idle", function () {
+            map.setZoom(3);
+            google.maps.event.removeListener(listener);
+        });
     }
-
-
-
 </script>
