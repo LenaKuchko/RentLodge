@@ -249,9 +249,9 @@ namespace RentLodge.Migrations
 
                     b.Property<string>("AditionalInfo");
 
-                    b.Property<int>("Bedrooms");
+                    b.Property<int>("Bathrooms");
 
-                    b.Property<int>("Bethrooms");
+                    b.Property<int>("Bedrooms");
 
                     b.Property<string>("Floor");
 
@@ -267,7 +267,9 @@ namespace RentLodge.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ApartmentId");
+                    b.Property<int>("ApartmentId");
+
+                    b.Property<int>("Days");
 
                     b.Property<string>("GuestId");
 
@@ -281,6 +283,8 @@ namespace RentLodge.Migrations
 
                     b.Property<bool>("Peyment");
 
+                    b.Property<float>("RentalSum");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ApartmentId");
@@ -289,7 +293,27 @@ namespace RentLodge.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Reservation");
+                    b.ToTable("Reservations");
+                });
+
+            modelBuilder.Entity("RentLodge.Models.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ApartmentId");
+
+                    b.Property<string>("GuestId");
+
+                    b.Property<int>("Rating");
+
+                    b.Property<string>("ReviewBody");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -364,9 +388,10 @@ namespace RentLodge.Migrations
 
             modelBuilder.Entity("RentLodge.Models.Reservation", b =>
                 {
-                    b.HasOne("RentLodge.Models.Apartment")
+                    b.HasOne("RentLodge.Models.Apartment", "Apartment")
                         .WithMany("Reservations")
-                        .HasForeignKey("ApartmentId");
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("RentLodge.Models.ApplicationUser", "Guest")
                         .WithMany()
@@ -375,6 +400,14 @@ namespace RentLodge.Migrations
                     b.HasOne("RentLodge.Models.ApplicationUser", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId");
+                });
+
+            modelBuilder.Entity("RentLodge.Models.Review", b =>
+                {
+                    b.HasOne("RentLodge.Models.Apartment", "Apartment")
+                        .WithMany()
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

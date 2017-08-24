@@ -8,7 +8,7 @@ using RentLodge.Data;
 namespace RentLodge.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170816164851_Initial")]
+    [Migration("20170824022910_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -250,9 +250,9 @@ namespace RentLodge.Migrations
 
                     b.Property<string>("AditionalInfo");
 
-                    b.Property<int>("Bedrooms");
+                    b.Property<int>("Bathrooms");
 
-                    b.Property<int>("Bethrooms");
+                    b.Property<int>("Bedrooms");
 
                     b.Property<string>("Floor");
 
@@ -261,6 +261,60 @@ namespace RentLodge.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Descriptions");
+                });
+
+            modelBuilder.Entity("RentLodge.Models.Reservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ApartmentId");
+
+                    b.Property<int>("Days");
+
+                    b.Property<string>("GuestId");
+
+                    b.Property<int>("GuestsNumber");
+
+                    b.Property<DateTime>("MoveIn");
+
+                    b.Property<DateTime>("MoveOut");
+
+                    b.Property<string>("OwnerId");
+
+                    b.Property<bool>("Peyment");
+
+                    b.Property<float>("RentalSum");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.HasIndex("GuestId");
+
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("Reservations");
+                });
+
+            modelBuilder.Entity("RentLodge.Models.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ApartmentId");
+
+                    b.Property<string>("GuestId");
+
+                    b.Property<int>("Rating");
+
+                    b.Property<string>("ReviewBody");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -330,6 +384,30 @@ namespace RentLodge.Migrations
                     b.HasOne("RentLodge.Models.Country", "Country")
                         .WithMany()
                         .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("RentLodge.Models.Reservation", b =>
+                {
+                    b.HasOne("RentLodge.Models.Apartment", "Apartment")
+                        .WithMany("Reservations")
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("RentLodge.Models.ApplicationUser", "Guest")
+                        .WithMany()
+                        .HasForeignKey("GuestId");
+
+                    b.HasOne("RentLodge.Models.ApplicationUser", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerId");
+                });
+
+            modelBuilder.Entity("RentLodge.Models.Review", b =>
+                {
+                    b.HasOne("RentLodge.Models.Apartment", "Apartment")
+                        .WithMany()
+                        .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

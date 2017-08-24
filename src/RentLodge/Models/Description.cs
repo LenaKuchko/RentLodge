@@ -13,7 +13,7 @@ namespace RentLodge.Models
         [Key]
         public int Id { get; set; }
         public int Bedrooms { get; set; }
-        public int Bethrooms { get; set; }
+        public int Bathrooms { get; set; }
         public string Floor { get; set; }
         public string AditionalInfo { get; set; }
         public int Guests { get; set; }
@@ -26,7 +26,7 @@ namespace RentLodge.Models
         public Description(int bedrooms, int bathrooms, string floor, string aditionalInfo, int guests)
         {
             Bedrooms = bedrooms;
-            Bethrooms = bathrooms;
+            Bathrooms = bathrooms;
             Floor = floor;
             AditionalInfo = aditionalInfo;
             Guests = guests;

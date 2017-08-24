@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RentLodge.Models
 {
-    [Table("Reservation")]
+    [Table("Reservations")]
     public class Reservation
     {
         [Key]
@@ -22,5 +22,12 @@ namespace RentLodge.Models
         public DateTime MoveIn { get; set; }
         public DateTime MoveOut { get; set; }
         public int GuestsNumber { get; set; }
+        public int Days { get; set; }
+        public float RentalSum { get; set; }
+
+        public float CalcRentalSum(Apartment apartment)
+        {
+            return this.Days * apartment.Price;
+        }
     }
 }

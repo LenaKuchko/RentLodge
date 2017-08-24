@@ -50,7 +50,7 @@ namespace RentLodge.Controllers
             //тернарный
             if (cityParam.Value != null)
             {
-                city = " AND Addresses.City = @city";
+                city = " AND ad.City = @city";
             }
             else
             {
@@ -77,10 +77,10 @@ namespace RentLodge.Controllers
                 "JOIN Countries ON (ad.CountryId = Countries.Id) " +
 
                 "WHERE ap.Id not in " +
-                "(SELECT reservation.ApartmentId FROM Reservation reservation " +
-                "WHERE (reservation.MoveIn <= @moveIn AND reservation.MoveOut >= @moveOut) " +
-                "OR (reservation.MoveIn <= @moveIn AND reservation.MoveOut >= @moveOut) " +
-                "OR (reservation.MoveIn >= @moveIn AND reservation.MoveIn <= @moveIn) GROUP BY reservation.ApartmentId)" + city + country;
+                "(SELECT reservations.ApartmentId FROM Reservations reservations " +
+                "WHERE (reservations.MoveIn <= @moveIn AND reservations.MoveOut >= @moveOut) " +
+                "OR (reservations.MoveIn <= @moveIn AND reservations.MoveOut >= @moveOut) " +
+                "OR (reservations.MoveIn >= @moveIn AND reservations.MoveIn <= @moveIn) GROUP BY reservations.ApartmentId)" + city + country;
 
  
             var apartments = db.Apartments.FromSql(query, parameters).Include(apart => apart.Address).ToList();

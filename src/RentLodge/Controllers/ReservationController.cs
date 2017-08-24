@@ -57,11 +57,20 @@ namespace RentLodge.Controllers
                 GuestId = guestId,
                 ApartmentId = apartmentToReserve.Id,
                 MoveIn = Convert.ToDateTime(moveIn),
-                MoveOut = Convert.ToDateTime(moveOut)};
+                MoveOut = Convert.ToDateTime(moveOut),
+                Days = Convert.ToDateTime(moveOut).Subtract(Convert.ToDateTime(moveIn)).Days
+            };
+            
+            newReservation.RentalSum = newReservation.CalcRentalSum(apartmentToReserve);
 
             this._db.Reservation.Add(newReservation);
             this._db.SaveChanges();
-            return View();
+            return View("ReservationInfo", newReservation);
+        }
+
+        public IActionResult Details (Reservation reservation)
+        {
+            return View(reservation);
         }
     }
 }
