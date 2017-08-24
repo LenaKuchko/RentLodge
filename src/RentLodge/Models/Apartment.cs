@@ -32,25 +32,16 @@ namespace RentLodge.Models
 
         public Apartment() { }
         public Apartment(
-            
             string title,
             int price,
             float rating = 0,
-            bool available = true
-            )
-        {
-            //Address = new Address(countryId, city, street, apartmentNumber);
-            //AddressId = Address.Save();
-            //Description  = new Description(bedrooms, bathrooms, floor, aditionalInfo, guests);
-            //DescriptionId = Description.Save();
-            Title = title;
-            //AddressId = addressId;
-            //DescriptionId = descriptionId;
-            //UserId = userId;
-            Price = price;
-            Rating = rating;
-            Available = available;
-        }
+            bool available = true)
+                {
+                    Title = title;
+                    Price = price;
+                    Rating = rating;
+                    Available = available;
+                }
 
         public List<object> GetCoords(string search)
         {
@@ -125,6 +116,16 @@ namespace RentLodge.Models
         public string GetAddress()
         {
             return this.Address.Street + this.Address.City + this.Address.Country;
+        }
+
+        public void CalculateRating(int newStar)
+        {
+            int ratingSum = 0;
+            foreach (var item in this.Reviews)
+            {
+                ratingSum += item.Rating;
+            }
+            this.Rating = (float)ratingSum / (float)this.Reviews.Count;
         }
         
     }

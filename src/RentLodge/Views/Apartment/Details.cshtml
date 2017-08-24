@@ -18,6 +18,23 @@
         <button type="submit" class="btn btn-default">Rent </button>
 
     </form>
+
+    @if(Model.Reviews.Count > 0)
+    {
+        <ul>
+            @foreach (var review in Model.Reviews)
+            {
+                <li>
+                    <h2>Date: @review.Date.ToString("yyyy MMMM")</h2>
+                    <h3>@review.Guest.FirstName @review.Guest.LastName</h3>
+                    <h4>@review.ReviewBody</h4>
+                </li>
+
+            }
+        </ul>
+       
+
+    }
     @*<button onclick="location.href='@Url.Action("Index", "Users")';return false;">Cancel</button>*@
 
 </div>
