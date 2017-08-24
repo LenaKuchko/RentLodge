@@ -100,7 +100,7 @@ namespace RentLodge.Controllers
         public IActionResult Create(ApartmentViewModel model)
         {
             
-            ApplicationDbContext db = new ApplicationDbContext();
+            //ApplicationDbContext db = new ApplicationDbContext();
             Address Address = new Address(model.CountryId, model.City, model.Street, model.ApartmentNumber);
             Description Description = new Description(model.Bedrooms, model.Bathrooms, model.Floor, model.AditionalInfo, model.Guests);
 
@@ -113,23 +113,31 @@ namespace RentLodge.Controllers
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             newApartment.UserId = userId;
 
-            db.Addresses.Add(Address);
-            db.SaveChanges();
+            this._db.Addresses.Add(Address);
+            this._db.SaveChanges();
 
-            db.Descriptions.Add(Description);
-            db.SaveChanges();
+            this._db.Descriptions.Add(Description);
+            this._db.SaveChanges();
 
             newApartment.AddressId = Address.Id;
             newApartment.DescriptionId = Description.Id;
-            db.Apartments.Add(newApartment);
-            db.SaveChanges();
+            this._db.Apartments.Add(newApartment);
+            this._db.SaveChanges();
 
-            return View("Index", db.Apartments.ToList());
+
+            return RedirectToAction("ApartmentsList");
+        }
+
+        public IActionResult ApartmentsList()
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var ownerApartments = this._db.Apartments.Where(apartment => apartment.UserId == userId).ToList();
+            return View(ownerApartments);
         }
 
         public IActionResult Details(int id)
         {
-            Apartment apartmentToDisplay = this._db.Apartments.FirstOrDefault(apartment => apartment.Id == id);
+            Apartment apartmentToDisplay = this._db.Apartments.Include(ap => ap.Address).Include(ap => ap.Description).FirstOrDefault(apartment => apartment.Id == id);
             return View(apartmentToDisplay);
         }
        

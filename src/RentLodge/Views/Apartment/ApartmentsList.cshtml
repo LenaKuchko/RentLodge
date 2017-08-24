@@ -1,0 +1,24 @@
+﻿@model IEnumerable<RentLodge.Models.Apartment>
+@{
+    ViewData["Title"] = "List of all apartments";
+}
+
+
+<div class="row">
+        <form asp-controller="Apartment" asp-action="Index" class="form-horizontal">
+            <h4>All apartments</h4>
+            <hr />
+            @foreach (var item in Model)
+            {
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id });
+
+                <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+            }
+
+        </form>
+</div>
+
+
+
