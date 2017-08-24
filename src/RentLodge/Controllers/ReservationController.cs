@@ -27,7 +27,9 @@ namespace RentLodge.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View();
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var guestReservations = this._db.Reservations.Include(res => res.Apartment).Where(res => res.GuestId == userId).ToList();
+            return View(guestReservations);
         }
 
         public IActionResult Create()
@@ -63,13 +65,15 @@ namespace RentLodge.Controllers
             
             newReservation.RentalSum = newReservation.CalcRentalSum(apartmentToReserve);
 
-            this._db.Reservation.Add(newReservation);
+            this._db.Reservations.Add(newReservation);
             this._db.SaveChanges();
             return View("ReservationInfo", newReservation);
         }
 
-        public IActionResult Details (Reservation reservation)
+        public IActionResult Details (int id)
         {
+            Reservation reservation = this._db.Reservations.Include(res => res.Apartment).FirstOrDefault(res => res.Id == id);
+
             return View(reservation);
         }
     }

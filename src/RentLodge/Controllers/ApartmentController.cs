@@ -137,7 +137,8 @@ namespace RentLodge.Controllers
 
         public IActionResult Details(int id)
         {
-            Apartment apartmentToDisplay = this._db.Apartments.Include(ap => ap.Address).Include(ap => ap.Description).FirstOrDefault(apartment => apartment.Id == id);
+            Apartment apartmentToDisplay = this._db.Apartments.Include(ap => ap.Address).Include(ap => ap.Description).Include(ap => ap.Reviews).FirstOrDefault(apartment => apartment.Id == id);
+
             return View(apartmentToDisplay);
         }
        

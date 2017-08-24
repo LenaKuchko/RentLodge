@@ -24,6 +24,7 @@ namespace RentLodge.Models
         public int GuestsNumber { get; set; }
         public int Days { get; set; }
         public float RentalSum { get; set; }
+    
 
         public float CalcRentalSum(Apartment apartment)
         {

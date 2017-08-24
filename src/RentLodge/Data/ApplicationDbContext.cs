@@ -15,7 +15,7 @@ namespace RentLodge.Data
         public DbSet<Apartment> Apartments { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Description> Descriptions { get; set; }
-        public DbSet<Reservation> Reservation { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Review> Reviews { get; set; }
 
         public ApplicationDbContext()

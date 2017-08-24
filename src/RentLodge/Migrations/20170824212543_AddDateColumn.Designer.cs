@@ -8,8 +8,8 @@ using RentLodge.Data;
 namespace RentLodge.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170824022910_Initial")]
-    partial class Initial
+    [Migration("20170824212543_AddDateColumn")]
+    partial class AddDateColumn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -304,6 +304,8 @@ namespace RentLodge.Migrations
 
                     b.Property<int>("ApartmentId");
 
+                    b.Property<DateTime>("Date");
+
                     b.Property<string>("GuestId");
 
                     b.Property<int>("Rating");
@@ -313,6 +315,8 @@ namespace RentLodge.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ApartmentId");
+
+                    b.HasIndex("GuestId");
 
                     b.ToTable("Reviews");
                 });
@@ -406,9 +410,13 @@ namespace RentLodge.Migrations
             modelBuilder.Entity("RentLodge.Models.Review", b =>
                 {
                     b.HasOne("RentLodge.Models.Apartment", "Apartment")
-                        .WithMany()
+                        .WithMany("Reviews")
                         .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("RentLodge.Models.ApplicationUser", "Guest")
+                        .WithMany()
+                        .HasForeignKey("GuestId");
                 });
         }
     }

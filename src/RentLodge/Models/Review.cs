@@ -13,10 +13,11 @@ namespace RentLodge.Models
         [Key]
         public int Id { get; set; }
         public string GuestId { get; set; }
+        public virtual ApplicationUser Guest { get; set; }
         public int ApartmentId { get; set; }
         public virtual Apartment Apartment { get; set; }
         public int Rating { get; set; }
         public string ReviewBody { get; set; }
-
+        public DateTime Date { get; set; }
     }
 }

@@ -28,6 +28,7 @@ namespace RentLodge.Models
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
 
         public Apartment() { }
         public Apartment(
