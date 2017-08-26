@@ -89,8 +89,6 @@ namespace RentLodge
 
             app.UseSession();
 
-            // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -98,37 +96,37 @@ namespace RentLodge
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //DatabaseInitialize(app.ApplicationServices).Wait();
+            DatabaseInitialize(app.ApplicationServices).Wait();
         }
 
-        //public async Task DatabaseInitialize(IServiceProvider serviceProvider)
-        //{
-        //    UserManager<ApplicationUser> userManager =
-        //        serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-        //    RoleManager<IdentityRole> roleManager =
-        //        serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        public async Task DatabaseInitialize(IServiceProvider serviceProvider)
+        {
+            UserManager<ApplicationUser> userManager =
+                serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            RoleManager<IdentityRole> roleManager =
+                serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-        //    string adminEmail = "admin@gmail.com";
-        //    string password = "Admin!1";
-        //    int countryId = 1;
-        //    if (await roleManager.FindByNameAsync("admin") == null)
-        //    {
-        //        await roleManager.CreateAsync(new IdentityRole("admin"));
-        //    }
-        //    if (await roleManager.FindByNameAsync("user") == null)
-        //    {
-        //        await roleManager.CreateAsync(new IdentityRole("user"));
-        //    }
-        //    if (await userManager.FindByNameAsync(adminEmail) == null)
-        //    {
-        //        ApplicationUser admin = new ApplicationUser { Email = adminEmail, UserName = adminEmail, CountryId = countryId };
-        //        IdentityResult result = await userManager.CreateAsync(admin, password);
-        //        if (result.Succeeded)
-        //        {
-        //            await userManager.AddToRoleAsync(admin, "admin");
-        //        }
-        //    }
+            string adminEmail = "admin@gmail.com";
+            string password = "Admin!1";
+            int countryId = 1;
+            if (await roleManager.FindByNameAsync("admin") == null)
+            {
+                await roleManager.CreateAsync(new IdentityRole("admin"));
+            }
+            if (await roleManager.FindByNameAsync("user") == null)
+            {
+                await roleManager.CreateAsync(new IdentityRole("user"));
+            }
+            if (await userManager.FindByNameAsync(adminEmail) == null)
+            {
+                ApplicationUser admin = new ApplicationUser { Email = adminEmail, UserName = adminEmail, CountryId = countryId };
+                IdentityResult result = await userManager.CreateAsync(admin, password);
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(admin, "admin");
+                }
+            }
 
-        //}
+        }
     }
 }

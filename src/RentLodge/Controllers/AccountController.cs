@@ -38,8 +38,6 @@ namespace RentLodge.Controllers
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
 
-
-
         //
         // GET: /Account/Login
         [HttpGet]

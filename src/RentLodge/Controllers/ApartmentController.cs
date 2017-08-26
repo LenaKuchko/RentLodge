@@ -43,9 +43,10 @@ namespace RentLodge.Controllers
             string city = "";
             string country = "";
 
-
             SqlParameter cityParam = new SqlParameter("@city", model.City);
             SqlParameter countryParam = new SqlParameter("@country", model.Country);
+            SqlParameter moveInParam = new SqlParameter("@moveIn", moveIn);
+            SqlParameter moveOutParam = new SqlParameter("@moveOut", moveOut);
 
             //тернарный
             if (cityParam.Value != null)
@@ -66,9 +67,7 @@ namespace RentLodge.Controllers
                 countryParam.Value = "";
             }
 
-            SqlParameter moveInParam = new SqlParameter("@moveIn", moveIn);
-            var a = moveInParam.Value;
-            SqlParameter moveOutParam = new SqlParameter("@moveOut", moveOut);
+           
             var parameters = new SqlParameter[] { moveInParam, moveOutParam, cityParam, countryParam };
 
             string query = "SELECT ap.Id, ap.AddressId, ap.Available, ap.DescriptionId, ap.Price, ap.Rating, ap.Title, ap.UserId, " +
@@ -82,11 +81,7 @@ namespace RentLodge.Controllers
                 "OR (reservations.MoveIn <= @moveIn AND reservations.MoveOut >= @moveOut) " +
                 "OR (reservations.MoveIn >= @moveIn AND reservations.MoveIn <= @moveIn) GROUP BY reservations.ApartmentId)" + city + country;
 
- 
             var apartments = db.Apartments.FromSql(query, parameters).Include(apart => apart.Address).ToList();
-
-
-            //ViewBag.Markers = Apartment.GetMarkers(apartments);
 
             var json = JsonConvert.SerializeObject(Apartment.GetMarkers(apartments));
             ViewBag.Markers = json;
@@ -99,8 +94,6 @@ namespace RentLodge.Controllers
         [HttpPost]
         public IActionResult Create(ApartmentViewModel model)
         {
-            
-            //ApplicationDbContext db = new ApplicationDbContext();
             Address Address = new Address(model.CountryId, model.City, model.Street, model.ApartmentNumber);
             Description Description = new Description(model.Bedrooms, model.Bathrooms, model.Floor, model.AditionalInfo, model.Guests);
 
@@ -121,10 +114,10 @@ namespace RentLodge.Controllers
 
             newApartment.AddressId = Address.Id;
             newApartment.DescriptionId = Description.Id;
+
             this._db.Apartments.Add(newApartment);
             this._db.SaveChanges();
-
-
+ 
             return RedirectToAction("ApartmentsList");
         }
 
@@ -157,9 +150,17 @@ namespace RentLodge.Controllers
         [HttpPost]
         public IActionResult Edit(Apartment apartment)
         {
+           
+
+           
+            //this._db.Entry(apartment.Description).State = EntityState.Modified;
+            //this._db.SaveChanges();
+
+            //this._db.Entry(apartment.Address).State = EntityState.Modified;
+            //this._db.SaveChanges();
+
             this._db.Entry(apartment).State = EntityState.Modified;
             this._db.SaveChanges();
-
             return RedirectToAction("Index");
         }
 
