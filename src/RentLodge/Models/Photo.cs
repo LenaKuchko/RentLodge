@@ -13,7 +13,7 @@ namespace RentLodge.Models
         [Key]
         public int Id { get; set; }
         public byte[] Image { get; set; }
-        public string ApartmentId { get; set; }
+        public int ApartmentId { get; set; }
         public virtual Apartment apartment { get; set; }
         public Photo() { }
     }

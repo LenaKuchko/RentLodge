@@ -256,6 +256,8 @@ C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Migrations\20170824205705_AddGest
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Migrations\20170824205705_AddGestId.Designer.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Migrations\20170824212543_AddDateColumn.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Migrations\20170824212543_AddDateColumn.Designer.cs
+C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Migrations\20170826184709_AddPhotosTable.cs
+C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Migrations\20170826184709_AddPhotosTable.Designer.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Migrations\ApplicationDbContextModelSnapshot.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Models\Address.cs
 C:\Users\Elena\Desktop\RentLodge\src\RentLodge\Models\Apartment.cs

@@ -1,0 +1,19 @@
+﻿@model RentLodge.Models.Photo
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="AddPhoto" asp-controller="Photo" enctype="multipart/form-data" method="post" >
+    <input asp-for="ApartmentId" type="hidden" class="form-control" />
+
+    <label>Title</label>
+    <div class="input-field">
+        <input type="text" id="Title" name="Title" />
+    </div>
+   
+    <label>Choose Image</label>
+    <div class="input-field">
+        <input type="file" id="Image" name="Image" />
+    </div>
+    <button class="btn waves-effect" type="submit">Add Photo</button>
+</form>

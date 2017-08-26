@@ -150,17 +150,17 @@ namespace RentLodge.Controllers
         [HttpPost]
         public IActionResult Edit(Apartment apartment)
         {
-           
-
-           
-            //this._db.Entry(apartment.Description).State = EntityState.Modified;
-            //this._db.SaveChanges();
-
-            //this._db.Entry(apartment.Address).State = EntityState.Modified;
-            //this._db.SaveChanges();
 
             this._db.Entry(apartment).State = EntityState.Modified;
             this._db.SaveChanges();
+
+            this._db.Entry(apartment.Description).State = EntityState.Modified;
+            this._db.SaveChanges();
+
+            this._db.Entry(apartment.Address).State = EntityState.Modified;
+            this._db.SaveChanges();
+
+
             return RedirectToAction("Index");
         }
 
@@ -188,5 +188,7 @@ namespace RentLodge.Controllers
             
             return RedirectToAction("Index");
         }
+
+       
     }
 }
