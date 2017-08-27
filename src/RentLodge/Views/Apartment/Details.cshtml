@@ -19,21 +19,37 @@
 
     </form>
 
+    @if (Model.Photos != null)
+    {
+        @foreach (var photo in Model.Photos)
+        {
+            string photoImage = "";
+            if (photo.Image != null)
+            {
+                var base64File = Convert.ToBase64String(photo.Image);
+                photoImage = String.Format("data:image/gif;base64,{0}", base64File);
+
+            }
+            <div class="dope-af-card">
+                <img src="@photoImage" width="200" />
+
+            </div>
+        }
+    }
+
     @if(Model.Reviews.Count > 0)
     {
         <ul>
             @foreach (var review in Model.Reviews)
             {
                 <li>
-                    <h2>Date: @review.Date.ToString("yyyy MMMM")</h2>
+                    <h2>@review.Date.ToString("yyyy MMMM")</h2>
                     <h3>@review.Guest.FirstName @review.Guest.LastName</h3>
                     <h4>@review.ReviewBody</h4>
                 </li>
 
             }
         </ul>
-       
-
     }
     @*<button onclick="location.href='@Url.Action("Index", "Users")';return false;">Cancel</button>*@
 

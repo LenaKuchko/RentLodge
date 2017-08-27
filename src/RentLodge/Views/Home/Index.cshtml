@@ -1,6 +1,7 @@
 ﻿@model RentLodge.Models.SearchViewModels.SearchViewModel
 @{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <form asp-controller="Apartment" asp-action="Index">
     <div class="form-group">
@@ -18,7 +19,7 @@
     <div class="form-group">
         <label asp-for="MoveIn" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-            <input asp-for="MoveIn" type="date" class="form-control" />
+            <input asp-for="MoveIn" type="date" class="picker__date-display" />
         </div>
     </div>
     <div class="form-group">
@@ -27,6 +28,6 @@
             <input asp-for="MoveOut" type="date" class="form-control" />
         </div>
     </div>
-    <button>Search</button>
+    <button class="btn btn-default">Search</button>
 </form>
 
