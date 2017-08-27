@@ -4,33 +4,53 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="search">
-    <form asp-controller="Apartment" asp-action="Index">
-        <div class="form-group">
-            <label asp-for="City" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="City" class="form-control" />
+    <div class="opacity">
+        <div class="container main-search">
+            <div class="search-container">
+                <div class="row header">
+
+                </div>
+                <div class="row">
+                    <form class="col m12 search-form" asp-controller="Apartment" asp-action="Index">
+                        <div class="col l4">
+                            @*<label asp-for="City" class=""></label>*@
+                            <div class="">
+                                <input asp-for="City" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col l2">
+                            @*<label asp-for="Country" class=""></label>*@
+                            <div class="">
+                                <select asp-for="Country" asp-items="ViewBag.Countries" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col l2">
+                            @*<label asp-for="MoveIn" class=""></label>*@
+                            <div class="">
+                                <input asp-for="MoveIn" type="date" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col l2">
+                            @*<label asp-for="MoveOut" class=""></label>*@
+                            <div class="">
+                                <input asp-for="MoveOut" type="date" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col l2">
+
+                            <button id="btn-search" class="btn btn-default">Search</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Country" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Country" class="form-control" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="MoveIn" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="MoveIn" type="date" class="picker__date-display" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="MoveOut" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="MoveOut" type="date" class="form-control" />
-            </div>
-        </div>
-        <button class="btn btn-default">Search</button>
-    </form>
+    </div>
 </div>
 
-
+<div class="container">
+    <div class="row">
+        <div class="quote">
+            <h2>I look my best when I'm totally free, on holiday, walking on the beach.</h2>
+        </div>
+    </div>
+</div>

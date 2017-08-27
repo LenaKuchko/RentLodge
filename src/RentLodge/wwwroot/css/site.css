@@ -78,18 +78,78 @@ label.star:before {
 
 
 /*//////////////////////////////materialize*/
+body {
+     font-family: 'Carter One', cursive;
+}
+#menu {
+    position: absolute;
+    padding-left: 30px;
+    padding-top: 30px;
+ 
+}
+.menu-icon {
+    font-size: 34px;
+    color:  #ffbd2b; 
+}
 .user-view {
     height: 200px;
 }
 
 .btn {
     background-color: #ffbd2b;
+    border-radius: 3px;
+   
 }
 .search {
     background-repeat: no-repeat;
-    height: 100vh;
+    height: auto;
     background-size: cover;
     width: 100%;
     background-image: url('../images/home_page.jpg');
+}
+.opacity {
+    height: 100vh;
+    background-size: cover;
+    width: 100%;
+    background-color: rgba(251, 251, 249, 0.28);
+}
+.form-control {
+    border-radius: 3px !important;
+    background-color: snow !important;
+    display: inline-block;
+    margin: 10px !important;
+    text-align:center;
+}
+.main-search {
+    width: 90%;
+    text-align: center;
+    padding-left: 20px;
 
+    
+}
+.main{
+    border: 2px solid salmon;
+    padding-left: 20px;
+    padding-top: 20%;
+    position:center;
+}
+.header {
+    height:300px;
+}
+.search-form {
+    border: 2px  solid #e2dbbb;
+    background-color: rgba(47, 68, 64, 0.66);
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    text-align:center;
+}
+.quote{
+    margin-top: 100px;
+    margin-bottom: 80px;
+
+}
+/*/////////buttons*/
+#btn-search {
+    width: 100%;
+    margin-top: 15px;
 }
