@@ -1,30 +1,30 @@
-﻿body {
+﻿/*body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
-.body-content {
+/*.body-content {
     padding-left: 15px;
     padding-right: 15px;
-}
+}*/
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
-input,
+/*input,
 select,
 textarea {
     max-width: 280px;
-}
+}*/
 
 /* Carousel */
-.carousel-caption p {
+/*.carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
-}
+}*/
 
 /* buttons and links extension to use brackets: [ click me ] */
-.btn-bracketed::before {
+/*.btn-bracketed::before {
     display:inline-block;
     content: "[";
     padding-right: 0.5em;
@@ -33,18 +33,18 @@ textarea {
     display:inline-block;
     content: "]";
     padding-left: 0.5em;
-}
+}*/
 
 /* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"]
+/*.carousel-inner .item img[src$=".svg"]
 {
     width: 100%;
-}
+}*/
 
 /* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
+/*@media screen and (max-width: 767px) {*/
   /* Hide captions */
-  .carousel-caption {
+  /*.carousel-caption {
     display: none
   }
 }
@@ -52,8 +52,8 @@ textarea {
   width: 270px;
   display: inline-block;
 }
-input.star { display: none; }
-label.star {
+input.star { display: none; }*/
+/*label.star {
   float: right;
   padding: 10px;
   font-size: 36px;
@@ -74,4 +74,22 @@ label.star:hover { transform: rotate(-15deg) scale(1.3); }
 label.star:before {
   content: '\f006';
   font-family: FontAwesome;
+}*/
+
+
+/*//////////////////////////////materialize*/
+.user-view {
+    height: 200px;
+}
+
+.btn {
+    background-color: #ffbd2b;
+}
+.search {
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+    width: 100%;
+    background-image: url('../images/home_page.jpg');
+
 }
