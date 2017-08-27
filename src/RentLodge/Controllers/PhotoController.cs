@@ -8,6 +8,7 @@ using RentLodge.Models;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace RentLodge.Controllers
 {
@@ -42,13 +43,13 @@ namespace RentLodge.Controllers
             this._db.Photos.Add(newPhoto);
             this._db.SaveChanges();
             
-            return RedirectToAction("Index", new {apartmentId = id});
+            return RedirectToAction("Index", new {id});
         }
 
         public IActionResult Index(int id)
         {
-            this._db.Photos.Where(p => p.ApartmentId == id).ToList();
-            return View();
+            var apartment = this._db.Apartments.Include(ap => ap.Photos).FirstOrDefault(ap => ap.Id == id);
+            return View(apartment);
         }
     }
 }

@@ -34,17 +34,13 @@
 </form>
 
 <script>
-    //$(document).ready(function () {
-    //    $('#apt-head').show(400);
+    //$('.add-head').click(function myfunction() {
+    //    $('#apt-head').toggle(400);
     //});
 
-    $('.add-head').click(function myfunction() {
-        $('#apt-head').toggle(400);
-    });
+    $(document).ready(function () {
 
-    $('.add-address').click(function () {
-
-        $('#display-address-form').toggle(400);
+        //$('#display-address-form').toggle(400);
        
         $.ajax({
             type: 'GET',
@@ -56,8 +52,8 @@
         });
     });
 
-    $('.add-description').click(function () {
-        $('#display-description-form').toggle(400);
+    $(document).ready(function () {
+        //$('#display-description-form').toggle(400);
         $.ajax({
             type: 'GET',
             dataType: 'html',

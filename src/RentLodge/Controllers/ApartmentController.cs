@@ -130,7 +130,11 @@ namespace RentLodge.Controllers
 
         public IActionResult Details(int id)
         {
-            Apartment apartmentToDisplay = this._db.Apartments.Include(ap => ap.Address).Include(ap => ap.Description).Include(ap => ap.Reviews).ThenInclude(r => r.Guest).FirstOrDefault(apartment => apartment.Id == id);
+            Apartment apartmentToDisplay = this._db.Apartments.Include(ap => ap.Address)
+                .Include(ap => ap.Description)
+                .Include(ap => ap.Photos)
+                .Include(ap => ap.Reviews)
+                .ThenInclude(r => r.Guest).FirstOrDefault(apartment => apartment.Id == id);
 
             return View(apartmentToDisplay);
         }
@@ -161,7 +165,7 @@ namespace RentLodge.Controllers
             this._db.SaveChanges();
 
 
-            return RedirectToAction("Index");
+            return RedirectToAction("ApartmentsList");
         }
 
         public IActionResult Delete(int id)
@@ -174,19 +178,27 @@ namespace RentLodge.Controllers
         public IActionResult DeleteConfirmed(int id)
         {
             Apartment apartmentToDelete = this._db.Apartments
-                .Include(apartment => apartment.Address)
-                .Include(apartment => apartment.Description)
+                .Include(ap => ap.Address)
+                .Include(ap => ap.Description)
+                .Include(ap => ap.Photos)
                 .FirstOrDefault(apartment => apartment.Id == id);
 
             Address addresToDelete = apartmentToDelete.Address;
             Description descriptionToDelete = apartmentToDelete.Description;
+            var photos = apartmentToDelete.Photos.ToList();
+
+            foreach(var photo in photos)
+            {
+                this._db.Remove(photo);
+                this._db.SaveChanges();
+            }
             
             this._db.Remove(addresToDelete);
             this._db.SaveChanges();
             this._db.Remove(descriptionToDelete);
             this._db.SaveChanges();
             
-            return RedirectToAction("Index");
+            return RedirectToAction("ApartmentsList");
         }
 
        

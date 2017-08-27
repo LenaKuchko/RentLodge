@@ -1,10 +1,10 @@
-﻿@model IEnumerable<RentLodge.Models.Photo>
+﻿@model RentLodge.Models.Apartment
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if (Model.Count() > 0)
+@if (Model != null)
 {
-    @foreach (var photo in Model)
+    @foreach (var photo in Model.Photos)
     {
         string photoImage = "";
         if (photo.Image != null)
@@ -19,5 +19,11 @@
         </div>
     }
 }
+
+@Html.ActionLink("Add photo", "AddPhoto", new { id = Model.Id })
+
+
+
+
 
 
