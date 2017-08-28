@@ -1,35 +1,28 @@
 ﻿@model RentLodge.Models.ApartnmentViewModels.ApartmentViewModel
-@*<form asp-controller="Address" asp-action="Create" method="post" class="form-horizontal" id="new-address">*@
-    <h4>Add address</h4>
+    <h4>Address</h4>
     <hr />
-    <div class="form-group">
-        <label asp-for="CountryId" class="col-md-2 control-label">Country</label>
-        <div class="col-md-10">
+    <div class="form-group col m6">
+        <label asp-for="CountryId" class="control-label">Country</label>
+        <div>
             <select asp-for="CountryId" asp-items="ViewBag.Countries" class="form-control"></select>
-            @*<input asp-for="Country" class="form-control"/>*@
         </div>
     </div>
-    <div class="form-group">
-        <label asp-for="City" class="col-md-2 control-label"></label>
+    <div class="form-group col m6">
+        <label asp-for="City" class="control-label"></label>
         <div class="col-md-10">
             <input asp-for="City" class="form-control"/>
         </div>
     </div>
-    <div class="form-group">
-        <label asp-for="Street" class="col-md-2 control-label"></label>
+    <div class="form-group col m10">
+        <label asp-for="Street" class="control-label"></label>
         <div class="col-md-10">
             <input asp-for="Street" class="form-control" />
         </div>
     </div>
-    <div class="form-group">
-        <label asp-for="ApartmentNumber" class="col-md-2 control-label"></label>
+    <div class="form-group col m2">
+        <label class="control-label">apt. #</label>
         <div class="col-md-10">
             <input asp-for="ApartmentNumber" class="form-control" />
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            @*<button type="submit" class="btn btn-default">Add address</button>*@
-        </div>
-    </div>
-@*</form>*@
+   

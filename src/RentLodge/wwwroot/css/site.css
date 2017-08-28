@@ -162,3 +162,21 @@ body {
 }
 .card-image {
 }
+
+textarea { 
+    height: 90px !important;
+}
+.new-apart {
+    background-repeat: no-repeat;
+    height: auto;
+    background-size: cover;
+    width: 100%;
+    background-image: url('../images/living-room.jpg');
+}
+.ap-form {
+    border: 1px solid rgba(208, 207, 207, 0.64);
+    background-color: rgba(93, 74, 34, 0.42);
+    color: #ffa706;
+    margin-bottom: 100px;
+    padding: 20px !important;
+}

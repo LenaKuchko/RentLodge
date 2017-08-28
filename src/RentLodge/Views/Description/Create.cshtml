@@ -1,35 +1,34 @@
 ﻿@model RentLodge.Models.ApartnmentViewModels.ApartmentViewModel
-@*<form asp-controller="Description" asp-action="Create" method="post" class="form-horizontal" id="new-description">*@
-    <h4>Add Description</h4>
+    <h4>Description</h4>
     <hr />
-    <div class="form-group">
-        <label asp-for="Bedrooms" class="col-md-2 control-label"></label>
+    <div class="form-group col m3">
+        <label asp-for="Bedrooms" class="control-label"></label>
         <div class="col-md-10">
             <input asp-for="Bedrooms" class="form-control" />
         </div>
     </div>
-<div class="form-group">
+<div class="form-group col m3">
     <label asp-for="Bathrooms" class="col-md-2 control-label"></label>
     <div class="col-md-10">
         <input asp-for="Bathrooms" class="form-control" />
     </div>
 </div>
-<div class="form-group">
+<div class="form-group col m3">
     <label asp-for="Floor" class="col-md-2 control-label"></label>
-    <div class="col-md-10">
+    <div>
         <input asp-for="Floor" class="form-control" />
     </div>
 </div>
-<div class="form-group">
+<div class="form-group col m3">
     <label asp-for="Guests" class="col-md-2 control-label"></label>
-    <div class="col-md-10">
+    <div>
         <input asp-for="Guests" class="form-control" />
     </div>
 </div>
-<div class="form-group">
-    <label asp-for="AditionalInfo" class="col-md-2 control-label"></label>
-    <div class="col-md-10">
-        <textarea asp-for="AditionalInfo" class="form-control" />
+<div class="form-group input-field col m12">
+    
+    <div>
+        <textarea id="AditionalInfo" class="materialize-textarea" asp-for="AditionalInfo"/>
+        <label for="AditionalInfo" class="control-label"></label>
     </div>
 </div>
-@*</form>*@
