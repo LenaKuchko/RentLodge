@@ -47,7 +47,7 @@ namespace RentLodge.Controllers
         }
 
         public IActionResult Index(int id)
-        {
+         {
             var apartment = this._db.Apartments.Include(ap => ap.Photos).FirstOrDefault(ap => ap.Id == id);
             return View(apartment);
         }
