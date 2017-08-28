@@ -8,15 +8,43 @@
             <form asp-controller="Apartment" asp-action="Index" class="form-horizontal">
                 <h4>All apartments</h4>
                 <hr />
-                @foreach (var item in Model)
-                  {
-                    @Html.ActionLink("Details", "Details", new { id = item.Id })
-                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id });*@
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col s12 l4">
+                            <div class="card">
+                                <div class="card-image">
+                                    @if (@item.Photos.Count == 0)
+                                    {
+                                        <img src="~/images/menu.jpg"/>
+                                    }
+                                    else
+                                    {
+                                        string photoImage = "";
+                                        if (@item.Photos.First().Image != null)
+                                        {
+                                            var base64File = Convert.ToBase64String(@item.Photos.First().Image);
+                                            photoImage = String.Format("data:image/gif;base64,{0}", base64File);
+                                        }
+                                            <img src="@photoImage" width="200" />
+                                    }
+                                    <span class="card-title">@Html.DisplayFor(modelItem => item.Title)</span>
+                                </div>
+                                
+                                <div class="card-action">
+                                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                                </div>
+                            </div>
+                        </div>
 
-                    <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
-                  }
 
+
+                       
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id });*@
+
+                    }
+                </div>
             </form>
         </div>
        
