@@ -134,7 +134,7 @@ body {
     position:center;
 }
 .header {
-    height:300px;
+    height:450px;
 }
 .search-form {
     border: 2px  solid #e2dbbb;
@@ -148,8 +148,15 @@ body {
     margin-bottom: 80px;
 
 }
+.container {
+    width: 100%;
+}
 /*/////////buttons*/
 #btn-search {
     width: 100%;
     margin-top: 15px;
+}
+/*/////////////////////////footer*/
+.page-footer {
+    background-color:#26A699;
 }

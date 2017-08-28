@@ -3,26 +3,28 @@
     ViewData["Title"] = "List of all apartments";
 }
 
+    <div class="row">
+        <div class="col l11 offset-l1" id="" style="overflow-y: scroll; height:70vh;">
+            <form asp-controller="Apartment" asp-action="Index" class="form-horizontal">
+                <h4>All apartments</h4>
+                <hr />
+                @foreach (var item in Model)
+                  {
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id });*@
 
-<div class="row">
-    <div class="col-md-8"  id="" style="overflow-y: scroll; height:70vh;">
-        <form asp-controller="Apartment" asp-action="Index" class="form-horizontal">
-            <h4>All apartments</h4>
-            <hr />
-            @foreach (var item in Model)
-            {
-                @Html.ActionLink("Details", "Details", new { id = item.Id })
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id });
+                    <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+                  }
 
-                <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
-            }
-
-        </form>
+            </form>
+        </div>
+       
     </div>
-    <div id="map" class="col-md-4" style="height:500px;">
+    <div id="map" class="col l12" style="height:500px;">
     </div>
- </div>
+
+
 
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8T9J_Db4_FYC_ogOhXHmEFLb423pktZk&callback=initMap">
@@ -34,39 +36,7 @@
         var locations = JSON.parse("@ViewBag.Markers");
         console.log(locations);
 
-        //var locations = [
-        // ['Bondi Beach', -33.890542, 151.274856, 4],
-        // ['Coogee Beach', -33.923036, 151.259052, 5],
-        // ['Cronulla Beach', -34.028249, 151.157507, 3],
-        // ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-        // ['Maroubra Beach', -33.950198, 151.259302, 1]
-        //];
-        //var map = new google.maps.Map(document.getElementById('map'), {
-        //    zoom: 10,
-        //    center: new google.maps.LatLng(-33.92, 151.25),
-        //    mapTypeId: google.maps.MapTypeId.ROADMAP
-        //});
-
-        //var infowindow = new google.maps.InfoWindow();
-
-        //var marker, i;
-
-        //for (i = 0; i < locations.length; i++) {
-        //    marker = new google.maps.Marker({
-        //        position: new google.maps.LatLng(locations[i][0], locations[i][1]),
-        //        map: map
-        //    });
-        //    console.log(locations[i][0]);
-        //    console.log(locations[i][1]);
-        //    //console.log(marker);
-
-        //    google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
-        //        return function () {
-        //            infowindow.setContent(String(locations[i][2]));
-        //            infowindow.open(map, marker);
-        //        }
-        //    })(marker, i));
-        //}
+        
 
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 10,

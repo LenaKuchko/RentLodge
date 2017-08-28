@@ -74,7 +74,7 @@ namespace RentLodge.Controllers
                 "ad.Id AS AdId, ad.ApartmentNumber, ad.City, ad.CountryId, ad.Street FROM Apartments ap " +
                 "JOIN Addresses ad ON (ap.AddressId = ad.Id) " +
                 "JOIN Countries ON (ad.CountryId = Countries.Id) " +
-
+            
                 "WHERE ap.Id not in " +
                 "(SELECT reservations.ApartmentId FROM Reservations reservations " +
                 "WHERE (reservations.MoveIn <= @moveIn AND reservations.MoveOut >= @moveOut) " +
@@ -82,6 +82,11 @@ namespace RentLodge.Controllers
                 "OR (reservations.MoveIn >= @moveIn AND reservations.MoveIn <= @moveIn) GROUP BY reservations.ApartmentId)" + city + country;
 
             var apartments = db.Apartments.FromSql(query, parameters).Include(apart => apart.Address).ToList();
+           
+            foreach (var apartment in apartments)
+            {
+                apartment.Photos = db.Photos.Where(ph => ph.ApartmentId == apartment.Id).ToList();
+            }
 
             var json = JsonConvert.SerializeObject(Apartment.GetMarkers(apartments));
             ViewBag.Markers = json;
