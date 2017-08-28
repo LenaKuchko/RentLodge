@@ -2,58 +2,59 @@
 @{
     ViewData["Title"] = "Details";
 }
-<div>
-    <form asp-controller="Reservation" asp-action="Create" method="post">
-        <input asp-for="Id" type="hidden"/>
-        <input asp-for="UserId" type="hidden" />
 
-        <h4>Apartment</h4>
-        <hr />
-        <h2>@Html.DisplayNameFor(modelItem => modelItem.Price) : @Html.DisplayFor(modelItem => modelItem.Price)</h2>
-        <h2>@Html.DisplayNameFor(modelItem => modelItem.Title) : @Html.DisplayFor(modelItem => modelItem.Title)</h2>
+<div class="details-container">
+    <div>
+        <form asp-controller="Reservation" asp-action="Create" method="post">
+            <input asp-for="Id" type="hidden" />
+            <input asp-for="UserId" type="hidden" />
 
-        <div id="PartialDescription"></div>
-        <div id="PartialAddress"></div>
+            <h4>Apartment</h4>
+            <hr />
+            <h2>@Html.DisplayNameFor(modelItem => modelItem.Price) : @Html.DisplayFor(modelItem => modelItem.Price)</h2>
+            <h2>@Html.DisplayNameFor(modelItem => modelItem.Title) : @Html.DisplayFor(modelItem => modelItem.Title)</h2>
 
-        <button type="submit" class="btn btn-default">Rent </button>
+            <div id="PartialDescription"></div>
+            <div id="PartialAddress"></div>
 
-    </form>
+            <button type="submit" class="btn btn-default">Rent </button>
 
-    @if (Model.Photos != null)
-    {
-        @foreach (var photo in Model.Photos)
+        </form>
+
+        @if (Model.Photos != null)
         {
-            string photoImage = "";
-            if (photo.Image != null)
+            @foreach (var photo in Model.Photos)
             {
-                var base64File = Convert.ToBase64String(photo.Image);
-                photoImage = String.Format("data:image/gif;base64,{0}", base64File);
+                string photoImage = "";
+                if (photo.Image != null)
+                {
+                    var base64File = Convert.ToBase64String(photo.Image);
+                    photoImage = String.Format("data:image/gif;base64,{0}", base64File);
 
+                }
+                <div class="dope-af-card">
+                    <img src="@photoImage" width="200" />
+
+                </div>
             }
-            <div class="dope-af-card">
-                <img src="@photoImage" width="200" />
-
-            </div>
         }
-    }
 
-    @if(Model.Reviews.Count > 0)
-    {
-        <ul>
-            @foreach (var review in Model.Reviews)
-            {
-                <li>
-                    <h2>@review.Date.ToString("yyyy MMMM")</h2>
-                    <h3>@review.Guest.FirstName @review.Guest.LastName</h3>
-                    <h4>@review.ReviewBody</h4>
-                </li>
-
-            }
-        </ul>
-    }
-    @*<button onclick="location.href='@Url.Action("Index", "Users")';return false;">Cancel</button>*@
-
+        @if (Model.Reviews.Count > 0)
+        {
+            <ul>
+                @foreach (var review in Model.Reviews)
+                {
+                    <li>
+                        <h2>@review.Date.ToString("yyyy MMMM")</h2>
+                        <h3>@review.Guest.FirstName @review.Guest.LastName</h3>
+                        <h4>@review.ReviewBody</h4>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
 </div>
+
     
 <script type="text/javascript">
     $(document).ready(function () {
