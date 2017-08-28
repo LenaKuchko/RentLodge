@@ -10,9 +10,6 @@
 // Initialize collapse button
 $(".button-collapse").sideNav();
 
-$(document).ready(function () {
-    $('select').material_select();
-});
 
 $('#AditionalInfo').val('New Text');
 $('#AditionalInfo').trigger('autoresize');

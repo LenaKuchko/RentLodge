@@ -5,20 +5,41 @@
 
 
 <div class="row">
+    <div class="col m11 offset-m1">
         <form asp-controller="Apartment" asp-action="Index" class="form-horizontal">
             <h4>All apartments</h4>
             <hr />
-            @foreach (var item in Model)
-            {
-                @Html.ActionLink("Details", "Details", new { id = item.Id })
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id });
-                @Html.ActionLink("Add photo", "Index", "Photo", new { id = item.Id })
+            <ul class="collection">
+                @foreach (var item in Model)
+                {
+                    <li class="collection-item avatar row">
+                        @if (item.Photos != null)
+                        {
+                            string photoImage = "";
+                            if (@item.Photos.First().Image != null)
+                            {
+                                var base64File = Convert.ToBase64String(@item.Photos.First().Image);
+                                photoImage = String.Format("data:image/gif;base64,{0}", base64File);
+                                <img class="img-collection col l3" src="@photoImage">
+                            }
+                            else
+                            {
+                                <img src="~/images/menu.jpg" />
+                            }
+                        }
 
-                <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
-            }
+                        <h3 >@Html.DisplayFor(modelItem => item.Title)<br /></h3>
+                             @Html.ActionLink("Details", "Details", new { id = item.Id }) <br />
+                             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <br />
+                             @Html.ActionLink("Delete", "Delete", new { id = item.Id }) <br />
+                             @Html.ActionLink("Add photo", "Index", "Photo", new { id = item.Id })
 
+                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                    </li>
+                }
+            </ul>
         </form>
+    </div>
 </div>
 
 
