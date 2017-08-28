@@ -159,9 +159,11 @@ body {
 /*/////////////////////////footer*/
 .page-footer {
     background-color:#26A699;
+    bottom: 0;
+    /*position:fixed;*/
+    width:100%;
 }
-.card-image {
-}
+
 
 textarea { 
     height: 90px !important;

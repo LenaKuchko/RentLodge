@@ -129,7 +129,10 @@ namespace RentLodge.Controllers
         public IActionResult ApartmentsList()
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var ownerApartments = this._db.Apartments.Include(ap => ap.Photos).Where(apartment => apartment.UserId == userId).ToList();
+            var ownerApartments = this._db.Apartments
+                .Include(ap => ap.Photos)
+                .Include(ap => ap.Address)
+                .Where(apartment => apartment.UserId == userId).ToList();
             return View(ownerApartments);
         }
 
