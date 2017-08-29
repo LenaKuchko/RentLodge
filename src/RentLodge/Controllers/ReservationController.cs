@@ -50,6 +50,7 @@ namespace RentLodge.Controllers
             Apartment apartmentToReserve = this._db.Apartments
                 .Include(apartment => apartment.Address)
                 .Include(apartment => apartment.Description)
+                .Include(apartment => apartment.Photos)
                 .FirstOrDefault(apartment => apartment.Id == id);
 
             var guestId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -64,10 +65,13 @@ namespace RentLodge.Controllers
             };
             
             newReservation.RentalSum = newReservation.CalcRentalSum(apartmentToReserve);
+            
 
             this._db.Reservations.Add(newReservation);
             this._db.SaveChanges();
-            return View("ReservationInfo", newReservation);
+
+            newReservation.Apartment = apartmentToReserve;
+            return View("Create", newReservation);
         }
 
         public IActionResult Details (int id)

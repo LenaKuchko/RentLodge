@@ -10,7 +10,6 @@
     <h4>Edit apartment</h4>
     <hr />
     <div class="form-group">
-        @*<label asp-for="ApartmentId" type="hidden" class="col-md-2 control-label"></label>*@
         <div class="col-md-10">
             <input asp-for="Id" type="hidden" class="form-control" />
             <input asp-for="UserId" type="hidden" class="form-control" />
@@ -21,8 +20,6 @@
             <input asp-for="Photos" type="hidden" class="form-control" />
             <input asp-for="Description.Id" type="hidden" class="form-control" />
             <input asp-for="Address.Id" type="hidden" class="form-control" />
-
-
         </div>
     </div>
     <div class="form-group">
@@ -103,46 +100,5 @@
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
 
-@*<script>
-    $('.update-apartment').click(function () {
-        console.log("Apartment edit");
-        console.log("@Model.Title");
-        var apTitle = "@Model.Title";
-        $.ajax({
-            dataType: 'html',
-            url: '@Url.Action("Edit")',
-            data: { 'title': apTitle},
-            type: 'POST',
-            contentType: 'application/html',
-            success: function (result) {
-                $('#update-result').html(result);
-            }
-        });
-    });
-    $('.edit-address').click(function () {
-        console.log(@Model.Id)
-        $.ajax({
-            type: 'GET',
-            dataType: 'html',
-            data: {id: @Model.AddressId},
-            url: '@Url.Action("Edit", "Address")',
-            success: function (result) {
-                $('#display-address-form').html(result);
-            }
-        });
-    });
-
-    $('.edit-description').click(function () {
-        $.ajax({
-            type: 'GET',
-            dataType: 'html',
-            data: {id: @Model.DescriptionId},
-            url: '@Url.Action("Edit", "Description")',
-            success: function (result) {
-                $('#display-description-form').html(result);
-            }
-        });
-    });
-</script>*@
 
 

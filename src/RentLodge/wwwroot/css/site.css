@@ -212,6 +212,24 @@ label.star:before {
 .details-body {
     /*background-color: rgba(153, 173, 172, 0.7);*/
 }
-.details-form {
-    background-color: white;
+
+.carousel .carousel-item img {
+    height: 400px !important;
+    width:auto !important;
 }
+.carousel .carousel-item {
+    margin-top: -100px !important;
+}.carousel {
+     height: 500px;
+     text-align: center;
+     margin-left: -100px;
+ }
+ .reservation-header {
+    background-image: url('../images/reservation.jpg');
+    background-repeat: no-repeat;
+    height: auto;
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+    padding-top: -300px !important;
+ }

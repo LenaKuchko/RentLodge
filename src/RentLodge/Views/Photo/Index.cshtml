@@ -11,7 +11,6 @@
         {
             var base64File = Convert.ToBase64String(photo.Image);
             photoImage = String.Format("data:image/gif;base64,{0}", base64File);
-
         }
         <div class="dope-af-card">
             <img src="@photoImage" width="200" />

@@ -15,4 +15,9 @@ $(document).ready(function () {
 });
 
 $('#AditionalInfo').val('New Text');
+
 $('#AditionalInfo').trigger('autoresize');
+
+$(document).ready(function () {
+    $('.carousel').carousel({duration: 400});
+});

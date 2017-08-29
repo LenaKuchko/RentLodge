@@ -1,8 +1,64 @@
 ﻿
+@model RentLodge.Models.Reservation
 @{
 }
-<div>
-    <form asp-controller="Reservation">
 
-    </form>
+<div class="reservation-header">
+
 </div>
+<div class="row reservation-body">
+    <div class="col l7 s12 offset-l3">
+            <h5>Information about your reservation</h5>
+                <div class="card horizontal">
+                    <div class="card-image">
+                       @if (Model.Apartment.Photos != null)
+                       {
+                           string photoImage = "";
+                           if (Model.Apartment.Photos.First().Image != null)
+                           {
+                               var base64File = Convert.ToBase64String(Model.Apartment.Photos.First().Image);
+                               photoImage = String.Format("data:image/gif;base64,{0}", base64File);
+
+                           }
+                        <img src="photoImage">
+                       }
+                       else
+                       {
+                            <img src="~/images/placeholder.jpg" />
+                       }
+
+                    </div>
+
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <h4>@Html.DisplayFor(modelItem => modelItem.Apartment.Title)</h4>
+                            <h6>Price: $ @Html.DisplayFor(modelItem => modelItem.Apartment.Price)/night</h6>
+                            <h6>Check-in: @Model.MoveIn.ToString("dd MMMM") (from: 12:00)</h6>
+                            <h6>Check-out: @Model.MoveOut.ToString("dd MMMM") (until: 12:00)</h6>
+                            <h6>Reservation Details: @Model.Days: Nights</h6>
+                            <h5>Total Price: $ @Model.RentalSum</h5>
+                        </div>
+                        <div class="card-action">
+                            <a href="#">This is a link</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l12">
+                        <div>
+                        <h4>Description</h4>
+                            <hr />
+                            <h5>@Html.DisplayNameFor(modelItem => modelItem.Apartment.Description.Bedrooms) : @Html.DisplayFor(modelItem => modelItem.Apartment.Description.Bedrooms)</h5>
+                            <h5>@Html.DisplayNameFor(modelItem => modelItem.Apartment.Description.Bathrooms) : @Html.DisplayFor(modelItem => modelItem.Apartment.Description.Bathrooms)</h5>
+                            <h5>@Html.DisplayNameFor(modelItem => modelItem.Apartment.Description.Floor) : @Html.DisplayFor(modelItem => modelItem.Apartment.Description.Floor)</h5>
+                            <h5>@Html.DisplayNameFor(modelItem => modelItem.Apartment.Description.Guests) : @Html.DisplayFor(modelItem => modelItem.Apartment.Description.Guests)</h5>
+                            <h5>Aditional Information : @Html.DisplayFor(modelItem => modelItem.Apartment.Description.AditionalInfo)</h5>
+                        </div>
+                        <div id="PartialDescription"></div>
+                    </div>
+                    <div class="col l4">
+                       
+                    </div>
+                </div>
+            </div>
+   </div>

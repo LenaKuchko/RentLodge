@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col l11 offset-l1" id="" style="overflow-y: scroll; height:70vh;">
             <form asp-controller="Apartment" asp-action="Index" class="form-horizontal">
-                <h4>All apartments</h4>
+                <h4>Available apartments</h4>
                 <hr />
                 <div class="row">
                     @foreach (var item in Model)
@@ -59,8 +59,6 @@
         var locations = JSON.parse("@ViewBag.Markers");
         console.log(locations);
 
-        
-
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 10,
             center: new google.maps.LatLng(-33.92, 151.25),
@@ -76,7 +74,6 @@
                 position: new google.maps.LatLng(locations[i][0], locations[i][1]),
                 map: map
             });
-
 
             bounds.extend(marker.position);
             console.log(locations.length)
@@ -101,10 +98,9 @@
                 infowindow.close();
             });
 
-
             map.fitBounds(bounds);
             var listener = google.maps.event.addListener(map, "idle", function () {
-                //map.setZoom(6);
+                //map.setZoom(15);
                 google.maps.event.removeListener(listener);
             });
         }

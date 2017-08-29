@@ -5,8 +5,8 @@
 
 <div class="details-container">
 </div>
-    <div class="row details-body">
-    <div class="col l9 offset-l2">
+   <div class="row details-body">
+    <div class="col l9 offset-l3">
         <div class="details-form">
             <form asp-controller="Reservation" asp-action="Create" method="post">
                 <input asp-for="Id" type="hidden" />
@@ -17,10 +17,11 @@
                 </div>
                <div class="row">
                    <div class="col l8">
+                       <div id="PartialAddress"></div>
                        <div id="PartialDescription"></div>
                    </div>
                    <div class="col l4">
-                       <div id="PartialAddress"></div>
+                       @*<div id="PartialAddress"></div>*@
                    </div>
                </div>
                 <button type="submit" class="btn btn-default">Rent </button>
@@ -29,24 +30,31 @@
     </div>
 </div>
 
-<div class="row">
-    @if (Model.Photos != null)
-    {
-        @foreach (var photo in Model.Photos)
+<div>
+    <div class="row">
+
+        @if (Model.Photos != null)
         {
-            string photoImage = "";
-            if (photo.Image != null)
-            {
-                var base64File = Convert.ToBase64String(photo.Image);
-                photoImage = String.Format("data:image/gif;base64,{0}", base64File);
+            <hr />
+            <div class="carousel">
+                @foreach (var photo in Model.Photos)
+                {
+                    string photoImage = "";
+                    if (photo.Image != null)
+                    {
+                        var base64File = Convert.ToBase64String(photo.Image);
+                        photoImage = String.Format("data:image/gif;base64,{0}", base64File);
 
-            }
-            <div class="dope-af-card">
-                <img src="@photoImage" width="200" />
-
+                    }
+                    <div class="dope-af-card">
+                        <a class="carousel-item"><img src="@photoImage"></a>
+                    </div>
+                }
             </div>
         }
-    }
+    </div>
+
+</div>
 
     @if (Model.Reviews.Count > 0)
     {
@@ -61,7 +69,7 @@
         }
     </ul>
     }
-</div>
+
     
 <script type="text/javascript">
     $(document).ready(function () {
