@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0",
-    "signature": "f61b4f8b4fdd0ee64014ca2c9939db46ed5ac606"
+    "signature": "cb78264538fbd669aeb134c41b59d1baec3ce9b2"
   },
   "compilationOptions": {
     "defines": [
@@ -40,7 +40,8 @@
           "twitter-bootstrap-wizard": "1.2.2",
           "Microsoft.AspNetCore.Session": "1.0.0",
           "Newtonsoft.Json": "9.0.1",
-          "Microsoft.AspNetCore.Identity": "1.0.0"
+          "Microsoft.AspNetCore.Identity": "1.0.0",
+          "Microsoft.Extensions.Logging.TraceSource": "1.0.0"
         },
         "runtime": {
           "RentLodge.dll": {}
@@ -1445,6 +1446,18 @@
           "lib/netstandard1.3/Microsoft.Extensions.Logging.Debug.dll": {}
         }
       },
+      "Microsoft.Extensions.Logging.TraceSource/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
+          "System.Diagnostics.TraceSource": "4.0.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.Extensions.Logging.TraceSource.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.Extensions.Logging.TraceSource.dll": {}
+        }
+      },
       "Microsoft.Extensions.ObjectPool/1.0.0": {
         "dependencies": {
           "System.Diagnostics.Debug": "4.0.11",
@@ -2126,6 +2139,32 @@
         },
         "compile": {
           "ref/netstandard1.0/System.Diagnostics.Contracts.dll": {}
+        }
+      },
+      "System.Diagnostics.TraceSource/4.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0-preview1-24530-04",
+          "System.Collections": "4.3.0-preview1-24530-04",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Globalization": "4.3.0-preview1-24530-04",
+          "System.Resources.ResourceManager": "4.3.0-preview1-24530-04",
+          "System.Runtime": "4.3.0-preview1-24530-04",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "runtime.native.System": "4.0.0"
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard1.3/System.Diagnostics.TraceSource.dll": {
+            "rid": "unix",
+            "assetType": "runtime"
+          },
+          "runtimes/win/lib/netstandard1.3/System.Diagnostics.TraceSource.dll": {
+            "rid": "win",
+            "assetType": "runtime"
+          }
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Diagnostics.TraceSource.dll": {}
         }
       },
       "System.Globalization/4.3.0-preview1-24530-04": {
@@ -4376,6 +4415,11 @@
       "serviceable": true,
       "sha512": "sha512-V8fP8pGJxieGa1DAYOF1RX+cCGGqdOGNoAQUzxmy27+qNzbHB/cUXc7mCZT72jPZMB4U12zSVWlIt26GMsUIOg=="
     },
+    "Microsoft.Extensions.Logging.TraceSource/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-j8Ie0CBn3tVFqB2rVeml5lf83PU75PbjKOwUk3IwyJPAVzvvhBLhSufQDq8o+wGdEt7uutdMKBjnKlvXTE7VlA=="
+    },
     "Microsoft.Extensions.ObjectPool/1.0.0": {
       "type": "package",
       "serviceable": true,
@@ -4600,6 +4644,11 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-HvQQjy712vnlpPxaloZYkuE78Gn353L0SJLJVeLcNASeg9c4qla2a1Xq8I7B3jZoDzKPtHTkyVO7AZ5tpeQGuA=="
+    },
+    "System.Diagnostics.TraceSource/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6WVCczFZKXwpWpzd/iJkYnsmWTSFFiU24Xx/YdHXBcu+nFI/ehTgeqdJQFbtRPzbrO3KtRNjvkhtj4t5/WwWsA=="
     },
     "System.Globalization/4.3.0-preview1-24530-04": {
       "type": "package",

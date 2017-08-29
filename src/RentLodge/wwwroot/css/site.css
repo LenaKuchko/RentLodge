@@ -206,4 +206,12 @@ label.star:before {
     height: auto;
     background-size: cover;
     width: 100%;
+    height: 300px;
+    padding-top: -300px !important;
+}
+.details-body {
+    /*background-color: rgba(153, 173, 172, 0.7);*/
+}
+.details-form {
+    background-color: white;
 }
