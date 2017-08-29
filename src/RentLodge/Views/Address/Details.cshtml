@@ -4,12 +4,12 @@
     ViewData["Title"] = "Address";
 }
 
-<h4>Address</h4>
+<h5>Address</h5>
 <hr />
-<h5>@Html.DisplayNameFor(modelItem => modelItem.City) : @Html.DisplayFor(modelItem => modelItem.City)</h5>
-<h5>@Html.DisplayNameFor(modelItem => modelItem.Street) : @Html.DisplayFor(modelItem => modelItem.Street)</h5>
-<h5>@Html.DisplayNameFor(modelItem => modelItem.ApartmentNumber) : @Html.DisplayFor(modelItem => modelItem.ApartmentNumber)</h5>
-<h5>@Html.DisplayNameFor(modelItem => modelItem.Country) : @Html.DisplayFor(modelItem => modelItem.Country.Name)</h5>
+<p>@Html.DisplayNameFor(modelItem => modelItem.City) : @Html.DisplayFor(modelItem => modelItem.City)</p>
+<p>@Html.DisplayNameFor(modelItem => modelItem.Street) : @Html.DisplayFor(modelItem => modelItem.Street)</p>
+<p>Apt#: @Html.DisplayFor(modelItem => modelItem.ApartmentNumber)</p>
+<p>@Html.DisplayNameFor(modelItem => modelItem.Country) : @Html.DisplayFor(modelItem => modelItem.Country.Name)</p>
 
 
 

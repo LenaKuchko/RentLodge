@@ -55,44 +55,66 @@
     </div>
 
 </div>
-
     @if (Model.Reviews.Count > 0)
     {
-    <ul>
-        @foreach (var review in Model.Reviews)
-        {
-            <li>
-                <h2>@review.Date.ToString("yyyy MMMM")</h2>
-                <h3>@review.Guest.FirstName @review.Guest.LastName</h3>
-                <h4>@review.ReviewBody</h4>
-            </li>
-        }
-    </ul>
+        <div class="row">
+            <div class="col l9 offset-l2">
+                    @foreach (var review in Model.Reviews)
+                {
+                        <div class="card">
+                            <div class="card-content white-text">
+                                <span class="card-title">@review.Date.ToString("yyyy MMMM")</span>
+                                <span class="card-title">@review.Guest.FirstName @review.Guest.LastName</span>
+                                <span class="card-title">Rating: @review.Rating</span>
+
+                                <p>
+                                    @*@review.ReviewBody*@
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at quam non libero semper egestas vitae non leo. Nunc euismod finibus porta. Quisque velit lacus, euismod sed velit ac, sodales vulputate turpis. Nunc bibendum euismod turpis et sagittis. Sed dignissim imperdiet enim, in pulvinar justo volutpat sit amet. Aliquam accumsan diam in sapien ultricies bibendum. Nulla eu bibendum ipsum. Mauris quis nisl metus. Sed sed odio eget urna tempus interdum. Donec nec sapien sed turpis pellentesque eleifend a quis dui.
+
+                                    Proin viverra velit leo, sit amet volutpat nunc dignissim in. Praesent eu dapibus ante. Nam quis ex a dui luctus lacinia eu eu lacus. Etiam ut varius dolor. Fusce vestibulum diam vitae nunc accumsan, sed laoreet dolor gravida. Vestibulum eu libero sit amet augue sagittis tincidunt eu ut felis. In ut turpis sollicitudin elit ullamcorper suscipit et in metus. Curabitur eget leo mi. Ut vehicula nibh eget erat facilisis tincidunt. Cras malesuada sem libero, sit amet suscipit magna blandit sed. Phasellus eget lacus maximus sem dapibus ullamcorper. Proin suscipit ullamcorper consectetur. Nullam dignissim odio risus, in posuere lectus fermentum sit amet. Nulla facilisis egestas risus, at rhoncus velit eleifend ut. Aliquam ac lorem iaculis, laoreet sem vitae, gravida quam.
+                                </p>
+                            </div>
+                            <div class="card-action">
+                                @if (@review.Rating > 3)
+                                {
+                                    <a>Recommend</a>
+                                }
+                                else
+                                {
+                                    <a>Do not reccomend</a>
+
+                                }
+
+                            </div>
+                        </div>
+                    }
+            </div>
+        </div>
     }
 
-    
-<script type="text/javascript">
-    $(document).ready(function () {
-        $.ajax({
-                dataType: 'html',
-                url: '@Url.Action("Details", "Description")',
-                data: { id: @Model.DescriptionId},
-                type: 'GET',
-                contentType: 'application/html',
-                success: function (result) {
-                    $('#PartialDescription').html(result);
-                }
-        });
 
-        $.ajax({
-            dataType: 'html',
-            url: '@Url.Action("Details", "Address")',
-            data: {id: @Model.AddressId},
-            type: 'GET',
-            contentType: 'application/html',
-            success: function (result) {
-                $('#PartialAddress').html(result);
-            }
-        });
-    });
-</script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $.ajax({
+                        dataType: 'html',
+                        url: '@Url.Action("Details", "Description")',
+                        data: { id: @Model.DescriptionId},
+                        type: 'GET',
+                        contentType: 'application/html',
+                        success: function (result) {
+                            $('#PartialDescription').html(result);
+                        }
+                    });
+
+                    $.ajax({
+                        dataType: 'html',
+                        url: '@Url.Action("Details", "Address")',
+                        data: {id: @Model.AddressId},
+                        type: 'GET',
+                        contentType: 'application/html',
+                        success: function (result) {
+                            $('#PartialAddress').html(result);
+                        }
+                    });
+                });
+            </script>

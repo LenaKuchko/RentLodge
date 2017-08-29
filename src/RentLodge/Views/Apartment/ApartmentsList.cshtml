@@ -41,8 +41,8 @@
                                 }
 
                                 <h3>@Html.DisplayFor(modelItem => item.Title)<br /></h3>
-                                <h4>Address: </h4>
-                                <h6>@item.Address.City @item.Address.Street street, apt.# @item.Address.ApartmentNumber</h6>
+                                <p>Address: </p>
+                                <p>@item.Address.City @item.Address.Street street, apt.# @item.Address.ApartmentNumber</p>
 
                                 <a class="" href="@Url.Action("Details", new { id = item.Id })"><i class="material-icons">details</i></a>
                                 <a class="" href="@Url.Action("Edit", new { id = item.Id })"><i class="material-icons">edit</i></a>

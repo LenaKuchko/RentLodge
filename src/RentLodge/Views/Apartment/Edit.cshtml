@@ -4,101 +4,99 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewData["Title"].</h2>
+<div class="edit-apart">
+    <div class="row">
+        <div class="col l12 edit-form">
+            <div class="col l6 offset-l3 ed-form">
+                <form asp-controller="Apartment" asp-action="Edit" method="post" class="form-horizontal">
+                    <h4>Edit apartment</h4>
+                    <hr />
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input asp-for="Id" type="hidden" class="form-control" />
+                            <input asp-for="UserId" type="hidden" class="form-control" />
+                            <input asp-for="AddressId" type="hidden" class="form-control" />
+                            <input asp-for="DescriptionId" type="hidden" class="form-control" />
+                            <input asp-for="Reservations" type="hidden" class="form-control" />
+                            <input asp-for="Reviews" type="hidden" class="form-control" />
+                            <input asp-for="Photos" type="hidden" class="form-control" />
+                            <input asp-for="Description.Id" type="hidden" class="form-control" />
+                            <input asp-for="Address.Id" type="hidden" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group col m10">
+                        <label asp-for="Title" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Title" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group col m2">
+                        <label asp-for="Price" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Price" class="form-control" />
+                        </div>
+                    </div>
 
-<form asp-controller="Apartment" asp-action="Edit" method="post" class="form-horizontal">
-    <h4>Edit apartment</h4>
-    <hr />
-    <div class="form-group">
-        <div class="col-md-10">
-            <input asp-for="Id" type="hidden" class="form-control" />
-            <input asp-for="UserId" type="hidden" class="form-control" />
-            <input asp-for="AddressId" type="hidden" class="form-control" />
-            <input asp-for="DescriptionId" type="hidden" class="form-control" />
-            <input asp-for="Reservations" type="hidden" class="form-control" />
-            <input asp-for="Reviews" type="hidden" class="form-control" />
-            <input asp-for="Photos" type="hidden" class="form-control" />
-            <input asp-for="Description.Id" type="hidden" class="form-control" />
-            <input asp-for="Address.Id" type="hidden" class="form-control" />
+                    <div class="form-group col m6">
+                        <label asp-for="Address.CountryId" class="col-md-2 control-label">Country</label>
+                        <div>
+                            <select asp-for="Address.CountryId" asp-items="ViewBag.Countries" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="form-group col m6">
+                        <label asp-for="Address.City" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Address.City" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group col m10">
+                        <label asp-for="Address.Street" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Address.Street" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group col m2">
+                        <label asp-for="Address.ApartmentNumber" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Address.ApartmentNumber" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group col m3">
+                        <label asp-for="Description.Bedrooms" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Description.Bedrooms" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group col m3">
+                        <label asp-for="Description.Bathrooms" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Description.Bathrooms" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group col m3">
+                        <label asp-for="Description.Floor" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Description.Floor" class="form-control" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-group col m3">
+                        <label asp-for="Description.Guests" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Description.Guests" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="Description.AditionalInfo" class="materialize-textarea" asp-for="Description.AditionalInfo"></textarea>
+                        <label for="Description.AditionalInfo" class="control-label"></label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <label asp-for="Title" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Title" class="form-control" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Price" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Price" class="form-control" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Address.CountryId" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <select asp-for="Address.CountryId" asp-items="ViewBag.Countries" class="form-control"></select>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Address.City" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Address.City" class="form-control" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Address.Street" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Address.Street" class="form-control" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Address.ApartmentNumber" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Address.ApartmentNumber" class="form-control" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Description.Bedrooms" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Description.Bedrooms" class="form-control" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Description.Bathrooms" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Description.Bathrooms" class="form-control" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Description.Floor" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Description.Floor" class="form-control" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Description.AditionalInfo" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Description.AditionalInfo" class="form-control" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Description.Guests" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Description.Guests" class="form-control" />
-        </div>
-    </div>
-   
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-        </div>
-        <div class="edit-address">Submit</div>
-    </div>
-
-    
-    <button type="submit" class="btn btn-default">Submit</button>
-</form>
+</div>
 
 
 

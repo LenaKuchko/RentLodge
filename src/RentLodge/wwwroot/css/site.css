@@ -52,8 +52,14 @@ textarea {
 
 
 //////////////////////////////materialize*/
-body {
+h1, h2, h3, h4, h5, h6, a {
      font-family: 'Carter One', cursive;
+
+}
+body {
+     /*font-family: 'Montserrat', sans-serif;*/
+     font-size: 18px;
+     font-family: 'Lato', sans-serif;
 }
 #menu {
     position: absolute;
@@ -89,10 +95,11 @@ body {
 }
 .form-control {
     border-radius: 3px !important;
-    background-color: snow !important;
+    background-color: #fef1de !important;
     display: inline-block;
     margin: 10px !important;
     text-align:center;
+    font-size: 26px !important;
 }
 .main-search {
     width: 90%;
@@ -140,7 +147,11 @@ body {
 
 
 textarea { 
-    height: 90px !important;
+    padding-left: 17px !important;
+    padding-right: 17px !important;
+
+    height: 100px !important;
+    font-size: 20px !important;
 }
 .new-apart {
     background-repeat: no-repeat;
@@ -152,6 +163,13 @@ textarea {
 .ap-form {
     border: 1px solid rgba(208, 207, 207, 0.64);
     background-color: rgba(93, 74, 34, 0.42);
+    color: #ffa706;
+    margin-bottom: 100px;
+    padding: 20px !important;
+}
+.ed-form {
+    border: 1px solid rgba(208, 207, 207, 0.64);
+    background-color: rgba(160, 151, 131, 0.88);
     color: #ffa706;
     margin-bottom: 100px;
     padding: 20px !important;
@@ -195,10 +213,11 @@ label.star:before {
 }
 .card {
     background-color: #ffab40;
-   
 }
 .card-action a {
-     color: #26a699 !important;
+    color: #26a699 !important;
+    
+
 }
 .details-container {
     background-image: url('../images/livingroom-details.jpeg');
@@ -233,3 +252,23 @@ label.star:before {
     height: 400px;
     padding-top: -300px !important;
  }
+ .edit-form {
+     margin-top: 250px !important;
+     /*margin-bottom: 200px !important;*/
+ }
+.edit-apart {
+    background-repeat: no-repeat;
+    height: auto;
+    background-size: cover;
+    width: 100%;
+    background-image: url('../images/edit-form-back.jpg');
+}
+/*.form-control-edit {
+    background-color: #f0eade !important;
+    /*background-color: rgb(125, 121, 107) !important;*/
+    /*color: white;
+    border-radius: 3px !important;
+    border: 1px solid #a58f76 !important;}*/
+    .date {
+        font-size: 20px !important;
+    }

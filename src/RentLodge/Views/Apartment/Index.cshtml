@@ -9,6 +9,10 @@
                 <h4>Available apartments</h4>
                 <hr />
                 <div class="row">
+                    @if(Model.Count() == 0)
+                    {
+                        <h5>There is no available apartments at that time</h5>
+                    }
                     @foreach (var item in Model)
                     {
                     <div class="col s12 l4">
