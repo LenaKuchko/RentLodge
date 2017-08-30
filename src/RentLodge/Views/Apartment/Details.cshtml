@@ -14,6 +14,7 @@
                 <div class="row">
                 <h3>@Html.DisplayNameFor(modelItem => modelItem.Title) : @Html.DisplayFor(modelItem => modelItem.Title)</h3>
                 <h5>@Html.DisplayNameFor(modelItem => modelItem.Price) : @Html.DisplayFor(modelItem => modelItem.Price)</h5>
+                <h5>@Html.DisplayNameFor(modelItem => modelItem.Rating) : @Html.DisplayFor(modelItem => modelItem.Rating)</h5>
                 </div>
                <div class="row">
                    <div class="col l8">
@@ -58,7 +59,7 @@
     @if (Model.Reviews.Count > 0)
     {
         <div class="row">
-            <div class="col l9 offset-l2">
+            <div class="col l7 offset-l3">
                     @foreach (var review in Model.Reviews)
                 {
                         <div class="card">
@@ -81,7 +82,6 @@
                                     <a>Do not reccomend</a>
 
                                 }
-
                             </div>
                         </div>
                     }

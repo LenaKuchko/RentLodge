@@ -92,7 +92,7 @@ namespace RentLodge.Controllers
             ViewBag.Markers = json;
 
             return View(apartments);
-        }
+         }
 
         public IActionResult Create() => View();
 

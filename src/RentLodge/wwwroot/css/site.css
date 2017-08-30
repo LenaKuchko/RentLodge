@@ -226,7 +226,7 @@ label.star:before {
     color: #26a699 !important;
 }
 .card-content p{
-    font-size: 22px;
+    font-size: 20px;
 }
 .details-container {
     background-image: url('../images/livingroom-details.jpeg');
@@ -302,4 +302,11 @@ label.star:before {
 .photo-header {
     background-color: white;
     height: 67px !important;
+}
+option:hover {
+    background-color: lightgray;
+}
+.details-photo {
+    height: 400px !important;
+    width: auto;
 }
