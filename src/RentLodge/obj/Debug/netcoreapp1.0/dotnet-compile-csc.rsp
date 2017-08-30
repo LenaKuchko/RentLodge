@@ -201,7 +201,7 @@
 -r:"C:\Users\epicodus\.nuget\packages\System.Reflection.TypeExtensions\4.1.0\ref\netstandard1.5\System.Reflection.TypeExtensions.dll"
 -r:"C:\Users\epicodus\.nuget\packages\System.Resources.Reader\4.0.0\lib\netstandard1.0\System.Resources.Reader.dll"
 -r:"C:\Users\epicodus\.nuget\packages\System.Resources.ResourceManager\4.3.0-preview1-24530-04\ref\netstandard1.0\System.Resources.ResourceManager.dll"
--r:"C:\Users\epicodus\.nuget\packages\System.Runtime\4.3.0-preview1-24530-04\ref\netstandard1.5\System.Runtime.dll"
+-r:"C:\Users\epicodus\.nuget\packages\System.Runtime\4.1.0\ref\netstandard1.5\System.Runtime.dll"
 -r:"C:\Users\epicodus\.nuget\packages\System.Runtime.Extensions\4.1.0\ref\netstandard1.5\System.Runtime.Extensions.dll"
 -r:"C:\Users\epicodus\.nuget\packages\System.Runtime.Handles\4.0.1\ref\netstandard1.3\System.Runtime.Handles.dll"
 -r:"C:\Users\epicodus\.nuget\packages\System.Runtime.InteropServices\4.1.0\ref\netstandard1.5\System.Runtime.InteropServices.dll"

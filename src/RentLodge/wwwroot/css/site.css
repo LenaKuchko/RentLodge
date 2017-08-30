@@ -94,6 +94,9 @@ body {
     background-color: rgba(251, 251, 249, 0.28);
 }
 .form-control {
+    
+}
+.custom {
     border-radius: 3px !important;
     background-color: #fef1de !important;
     display: inline-block;
@@ -269,6 +272,23 @@ label.star:before {
     /*color: white;
     border-radius: 3px !important;
     border: 1px solid #a58f76 !important;}*/
-    .date {
+.date {
         font-size: 20px !important;
-    }
+}
+.login-container {
+    background-image: url('../images/login.jpg');
+    height: 100vh !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+.login-form {
+    background-color:rgba(240, 248, 255, 0.14);
+    padding: 30px;
+    margin-top: 250px;
+    font-size: 18px !important;
+}
+.login-form .form-control {
+    font-size: 35px !important;
+
+}
