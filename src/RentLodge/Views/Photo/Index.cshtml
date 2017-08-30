@@ -2,31 +2,50 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div id="photos">
+<div class="photo-header">
 
 </div>
-<div class="photo-container">
-    @if (Model != null)
-    {
-        @foreach (var photo in Model.Photos)
-        {
-            string photoImage = "";
-            if (photo.Image != null)
-            {
-                var base64File = Convert.ToBase64String(photo.Image);
-                photoImage = String.Format("data:image/gif;base64,{0}", base64File);
-            }
-            <div class="dope-af-card">
-                <img class="materialboxed" src="@photoImage" width="200" />
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="~/images/photo-back-2.jpg" />
+    </div>
+</div>
+<div class="section white">
+    <div class="row container">
+        <div class="row container">
+            <div class="photo-container col l11 offset-l1">
 
+                @if (Model != null)
+                {
+                    @foreach (var photo in Model.Photos)
+                    {
+                        string photoImage = "";
+                        <div class="card">
+                            <div class="card-image">
+                                @if (photo.Image != null)
+                                {
+                                    var base64File = Convert.ToBase64String(photo.Image);
+                                    photoImage = String.Format("data:image/gif;base64,{0}", base64File);
+                                }
+                                <div class="dope-af-card col l3">
+                                    <img class="materialboxed" src="@photoImage" width="250" />
+                                </div>
+                            </div>
+                            
+                        </div>
+                    }
+                }
+                <div id="photos"></div>
             </div>
-        }
-    }
-   
-    @*@Html.ActionLink("Add photo", "AddPhoto", new { id = Model.Id })*@
-
-
+        </div>
+    </div>
 </div>
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="~/images/photo-back.jpg" />
+    </div>
+</div>
+
 
 <script>
     $(document).ready(function () {

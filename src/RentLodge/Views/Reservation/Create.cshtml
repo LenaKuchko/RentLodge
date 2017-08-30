@@ -11,7 +11,7 @@
             <h5>Information about your reservation</h5>
                 <div class="card horizontal">
                     <div class="card-image">
-                       @if (Model.Apartment.Photos != null)
+                       @if (Model.Apartment.Photos.Count() > 0)
                        {
                            string photoImage = "";
                            if (Model.Apartment.Photos.First().Image != null)
@@ -32,14 +32,14 @@
                     <div class="card-stacked">
                         <div class="card-content">
                             <h4>@Html.DisplayFor(modelItem => modelItem.Apartment.Title)</h4>
-                            <h6>Price: $ @Html.DisplayFor(modelItem => modelItem.Apartment.Price)/night</h6>
-                            <h6>Check-in: @Model.MoveIn.ToString("dd MMMM") (from: 12:00)</h6>
-                            <h6>Check-out: @Model.MoveOut.ToString("dd MMMM") (until: 12:00)</h6>
-                            <h6>Reservation Details: @Model.Days: Nights</h6>
-                            <h5>Total Price: $ @Model.RentalSum</h5>
+                            <h5>Price: $ @Html.DisplayFor(modelItem => modelItem.Apartment.Price)/night</h5>
+                            <p>Check-in: @Model.MoveIn.ToString("dd MMMM") (from: 12:00)</p>
+                            <p>Check-out: @Model.MoveOut.ToString("dd MMMM") (until: 12:00)</p><br />
+                            <p>Stay: @Model.Days Nights</p>
+                           
                         </div>
                         <div class="card-action">
-                            <a href="#">This is a link</a>
+                            <a> Total Price: $ @Model.RentalSum</a>
                         </div>
                     </div>
                 </div>

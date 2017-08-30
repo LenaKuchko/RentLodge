@@ -23,7 +23,7 @@ namespace RentLodge.Controllers
         public IActionResult AddPhoto(int id)
         {
             ViewBag.ApartmentId = id;
-            return View();
+            return PartialView();
         }
 
         [HttpPost]

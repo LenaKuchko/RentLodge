@@ -15,7 +15,7 @@
                         <div class="col l4">
                             @*<label asp-for="City" class=""></label>*@
                             <div class="">
-                                <input asp-for="City" class="form-control custom" />
+                                <input asp-for="City" class="form-control custom" placeholder="London, Paris, Rome..."/>
                             </div>
                         </div>
                         <div class="form-group col l2">
@@ -26,17 +26,16 @@
                         <div class="col l2">
                             @*<label asp-for="MoveIn" class=""></label>*@
                             <div>
-                                <input asp-for="MoveIn" type="date" class="form-control date custom" />
+                                <input asp-for="MoveIn" type="text" class="datepicker custom date" placeholder="Move In" />
                             </div>
                         </div>
                         <div class="col l2">
                             @*<label asp-for="MoveOut" class=""></label>*@
                             <div>
-                                <input asp-for="MoveOut" type="date" class="form-control date custom" />
+                                <input asp-for="MoveOut" type="text" class="datepicker custom date" placeholder="Move Out" />
                             </div>
                         </div>
                         <div class="col l2">
-
                             <button id="btn-search" class="btn btn-default">Search</button>
                         </div>
                     </form>
