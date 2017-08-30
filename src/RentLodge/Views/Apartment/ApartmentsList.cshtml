@@ -7,64 +7,54 @@
 
 
 <div class="row ap-list-header">
-    
-  </div>
-  
-    <div class="row container">
-        <div class="row">
-            <div class="col m8 offset-m2">
-                <form asp-controller="Apartment" asp-action="Index" class="form-horizontal">
-                    <h4>Your property</h4>
-                    <hr />
-                    <ul class="collection z-depth-5">
-                        @foreach (var item in Model)
-                        {
-                            <li class="collection-item avatar row ">
-                                @if (item.Photos.Count > 0)
+</div>
+<div class="row container">
+    <div class="row">
+        <div class="col m8 offset-m2">
+            <form asp-controller="Apartment" asp-action="Index" class="form-horizontal">
+                <h4>Your property</h4>
+                <hr />
+                <ul class="collection z-depth-5">
+                    @foreach (var item in Model)
+                    {
+                        <li class="collection-item avatar row ">
+                            @if (item.Photos.Count > 0)
+                            {
+                                string photoImage = "";
+                                if (@item.Photos.First().Image != null)
                                 {
-                                    string photoImage = "";
-                                    if (@item.Photos.First().Image != null)
-                                    {
-                                        var base64File = Convert.ToBase64String(@item.Photos.First().Image);
-                                        photoImage = String.Format("data:image/gif;base64,{0}", base64File);
-                                        <img class="img-collection col l4" src="@photoImage">
-                                    }
-                                    else
-                                    {
-                                        <img class="img-collection col l4" src="~/images/placeholder.jpg" />
-                                    }
+                                    var base64File = Convert.ToBase64String(@item.Photos.First().Image);
+                                    photoImage = String.Format("data:image/gif;base64,{0}", base64File);
+                                    <img class="img-collection col l4" src="@photoImage">
                                 }
                                 else
                                 {
                                     <img class="img-collection col l4" src="~/images/placeholder.jpg" />
                                 }
+                            }
+                            else
+                            {
+                                <img class="img-collection col l4" src="~/images/placeholder.jpg" />
+                            }
 
-                                <h3>@Html.DisplayFor(modelItem => item.Title)<br /></h3>
-                                <p>Address: </p>
-                                <p>@item.Address.City @item.Address.Street street, apt.# @item.Address.ApartmentNumber</p>
+                            <h3>@Html.DisplayFor(modelItem => item.Title)<br /></h3>
+                            <p>Address: </p>
+                            <p>@item.Address.City @item.Address.Street street, apt.# @item.Address.ApartmentNumber</p>
 
-                                <a class="" href="@Url.Action("Details", new { id = item.Id })"><i class="material-icons">details</i></a>
-                                <a class="" href="@Url.Action("Edit", new { id = item.Id })"><i class="material-icons">edit</i></a>
-                                <a class="" href="@Url.Action("Delete", new { id = item.Id })"><i class="material-icons">delete</i></a>
-                                <a class="" href="@Url.Action("Index", "Photo", new { id = item.Id })"><i class="material-icons">add_a_photo</i></a>
+                            <a class="" href="@Url.Action("Details", new { id = item.Id })"><i class="material-icons">details</i></a>
+                            <a class="" href="@Url.Action("Edit", new { id = item.Id })"><i class="material-icons">edit</i></a>
+                            <a class="" href="@Url.Action("Delete", new { id = item.Id })"><i class="material-icons">delete</i></a>
+                            <a class="" href="@Url.Action("Index", "Photo", new { id = item.Id })"><i class="material-icons">add_a_photo</i></a>
 
-                                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                            </li>
-                        }
-                    </ul>
-                </form>
-            </div>
+                            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                        </li>
+                    }
+                </ul>
+            </form>
+        </div>
     </div>
- </div>
+</div>
 
-
-
-
-@*<script>
-    $(document).ready(function () {
-        $('.parallax').parallax();
-    });
-</script>*@
 
 
 

@@ -9,27 +9,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - RentLodge</title>
-    @*<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">*@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
    
-    <environment names="Development">
-        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />*@
-        @*<link href="~/css/materialize.css" rel="stylesheet" />
-        <link href="~/css/site.css" rel="stylesheet" />*@
-    </environment>
-    <environment names="Staging,Production">
-        @*<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />*@
-        @*<link href="~/css/materialize.css" rel="stylesheet" />
-        <link href="~/css/site.css" rel="stylesheet" />*@
-    </environment>
-
     <environment names="Development">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -64,7 +49,6 @@
             </div>
         </li>
             <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-            @*<li><a asp-area="" asp-controller="Country" asp-action="Create">New Country</a></li>*@
             @if (User.Identity.IsAuthenticated)
             {
                 <li><a asp-area="" asp-controller="Apartment" asp-action="Create">New Apartment</a></li>
@@ -73,46 +57,16 @@
 
             }
         <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-        @*<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>*@
-        @*<li><a href="#!">Second Link</a></li>*@
-       
-        @*<li><a class="subheader">Subheader</a></li>*@
         <li><div class="divider"></div></li>
         @await Html.PartialAsync("_LoginPartial")
     </ul>
     <a href="#" id="menu" data-activates="slide-out" class="button-collapse"><i class="material-icons menu-icon">menu</i></a>
-
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">RentLodge</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                   
-                    <li><a asp-area="" asp-controller="Country" asp-action="Create">New Country</a></li>
-                    <li><a asp-area="" asp-controller="Reservation" asp-action="Index">My Reservations</a></li>
-
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
-            </div>
-        </div>
-    </div>*@
-   
         @RenderBody()
-       
     <footer class="page-footer">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
+                    <h5 class="white-text">Rent Lodge</h5>
                     <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
                 </div>
                 <div class="col l4 offset-l2 s12">
@@ -133,50 +87,23 @@
             </div>
         </div>
     </footer>
-    <environment names="Development">
 
+    <environment names="Development">
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="~/js/materialize.js"></script>
         <script src="~/js/site.js"></script>
-
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery">
         </script>
-
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="~/js/materialize.js"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
-
-
     </environment>
-
-    @*<environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>*@
-        @*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>*@
-        @*<script src="~/js/materialize.js"></script>
-        <script src="~/js/site.js"></script>*@
-        @*<script src="~/js/site.js" asp-append-version="true"></script>*@
-    @*</environment>*@
-    @*<environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery">
-        </script>*@
-        @*<script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-        </script>*@
-        @*<script src="~/js/materialize.js"></script>
-        <script src="~/js/site.js"></script>*@
-        @*<script src="~/js/site.min.js" asp-append-version="true"></script>*@
-    @*</environment>*@
-
     @RenderSection("scripts", required: false)
 </body>
-
 </html>
 
 
