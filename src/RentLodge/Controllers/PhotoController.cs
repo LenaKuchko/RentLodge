@@ -22,11 +22,12 @@ namespace RentLodge.Controllers
         }
         public IActionResult AddPhoto(int id)
         {
+            ViewBag.ApartmentId = id;
             return View();
         }
 
         [HttpPost]
-        public IActionResult AddPhoto(IFormFile image, int id)
+        public IActionResult AddPhoto(IFormFile image, int ApartmentId)
         {
             byte[] newImage = new byte[0];
             if (image != null)
@@ -38,12 +39,16 @@ namespace RentLodge.Controllers
                     newImage = ms.ToArray();
                 }
             }
-            Photo newPhoto = new Photo { ApartmentId = id, Image = newImage };
+            Photo newPhoto = new Photo { ApartmentId = ApartmentId, Image = newImage };
             
             this._db.Photos.Add(newPhoto);
             this._db.SaveChanges();
+
+            var apartment = this._db.Apartments.
+                Include(ap =>ap.Photos)
+                .FirstOrDefault(ap => ap.Id == ApartmentId);
             
-            return RedirectToAction("Index", new {id});
+            return RedirectToAction("Index", apartment);
         }
 
         public IActionResult Index(int id)

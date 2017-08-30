@@ -144,15 +144,16 @@ body {
 .page-footer {
     background-color:#26A699;
     bottom: 0;
-    /*position:fixed;*/
+    position:fixed;
     width:100%;
 }
 
 
 textarea { 
-    padding-left: 17px !important;
-    padding-right: 17px !important;
-
+    /*padding-left: 30px !important;
+    padding-right: 30px !important;
+    margin-right: 30px !important;*/
+    width: auto;
     height: 100px !important;
     font-size: 20px !important;
 }
@@ -169,12 +170,13 @@ textarea {
     color: #ffa706;
     margin-bottom: 100px;
     padding: 20px !important;
+    margin-top: 100px;
 }
 .ed-form {
     border: 1px solid rgba(208, 207, 207, 0.64);
     background-color: rgba(160, 151, 131, 0.88);
     color: #ffa706;
-    margin-bottom: 100px;
+    margin-bottom: 100px !important;
     padding: 20px !important;
 }
 .img-collection {
@@ -225,11 +227,11 @@ label.star:before {
 .details-container {
     background-image: url('../images/livingroom-details.jpeg');
     background-repeat: no-repeat;
-    height: auto;
+    /*height: auto;*/
     background-size: cover;
     width: 100%;
     height: 300px;
-    padding-top: -300px !important;
+    /*padding-top: -300px !important;*/
 }
 .details-body {
     /*background-color: rgba(153, 173, 172, 0.7);*/
@@ -256,8 +258,7 @@ label.star:before {
     padding-top: -300px !important;
  }
  .edit-form {
-     margin-top: 250px !important;
-     /*margin-bottom: 200px !important;*/
+     margin-top: 200px !important;
  }
 .edit-apart {
     background-repeat: no-repeat;
@@ -275,20 +276,27 @@ label.star:before {
 .date {
         font-size: 20px !important;
 }
-.login-container {
+.auth-container {
     background-image: url('../images/login.jpg');
     height: 100vh !important;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
 }
-.login-form {
+.auth-form {
     background-color:rgba(240, 248, 255, 0.14);
     padding: 30px;
     margin-top: 250px;
     font-size: 18px !important;
 }
-.login-form .form-control {
+.auth-form .form-control {
     font-size: 35px !important;
 
+}
+.ap-list-header {
+    background-image: url('../images/sofa.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 300px;
 }

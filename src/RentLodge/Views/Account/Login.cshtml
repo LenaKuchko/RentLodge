@@ -8,11 +8,11 @@
     ViewData["Title"] = "Log in";
 }
 
-<div class="login-container">
+<div class="auth-container">
     <div class="row">
         <div class="col m5 offset-l3">
             <section>
-                <div class="login-form z-depth-5">
+                <div class="auth-form z-depth-5">
                     <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
                         <h4>Log in</h4>
                         <hr />
@@ -21,7 +21,7 @@
                             <label asp-for="Email" class="col-md-2 control-label"></label>
                             <div class="col-md-10">
                                 <input asp-for="Email" class="form-control" />
-                                <span asp-validation-for="Email" class="text-danger"></span>
+                                @*<span asp-validation-for="Email" class="text-danger"></span>*@
                             </div>
                         </div>
                         <div class="form-group">

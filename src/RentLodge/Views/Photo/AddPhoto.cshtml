@@ -3,8 +3,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <form asp-action="AddPhoto" asp-controller="Photo" enctype="multipart/form-data" method="post" >
-    <input asp-for="ApartmentId" type="hidden" class="form-control" />
+    
+    <input asp-for="ApartmentId" value="@ViewBag.ApartmentId" type="hidden" class="form-control" />
 
     <label>Title</label>
     <div class="input-field">

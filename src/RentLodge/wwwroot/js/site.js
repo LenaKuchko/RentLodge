@@ -14,3 +14,6 @@ $('#AditionalInfo').trigger('autoresize');
 $(document).ready(function () {
     $('.carousel').carousel({duration: 400});
 });
+$(document).ready(function () {
+    $('.select').material_select();
+});

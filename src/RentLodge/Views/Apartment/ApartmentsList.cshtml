@@ -6,21 +6,20 @@
 }
 
 
-<div class="parallax-container">
-    <div class="parallax">
-        <img src="~/images/sofa.jpg" /></div>
+<div class="row ap-list-header">
+    
   </div>
-  <div class="section white">
+  
     <div class="row container">
         <div class="row">
-            <div class="col m8 offset-m3">
+            <div class="col m8 offset-m2">
                 <form asp-controller="Apartment" asp-action="Index" class="form-horizontal">
-                    <h4>All apartments</h4>
+                    <h4>Your property</h4>
                     <hr />
-                    <ul class="collection">
+                    <ul class="collection z-depth-5">
                         @foreach (var item in Model)
                         {
-                            <li class="collection-item avatar row">
+                            <li class="collection-item avatar row ">
                                 @if (item.Photos.Count > 0)
                                 {
                                     string photoImage = "";
@@ -55,18 +54,17 @@
                     </ul>
                 </form>
             </div>
-        </div>
     </div>
  </div>
 
 
 
 
-<script>
+@*<script>
     $(document).ready(function () {
         $('.parallax').parallax();
     });
-</script>
+</script>*@
 
 
 

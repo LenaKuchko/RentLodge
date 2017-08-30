@@ -2,24 +2,45 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if (Model != null)
-{
-    @foreach (var photo in Model.Photos)
+<div id="photos">
+
+</div>
+<div class="photo-container">
+    @if (Model != null)
     {
-        string photoImage = "";
-        if (photo.Image != null)
+        @foreach (var photo in Model.Photos)
         {
-            var base64File = Convert.ToBase64String(photo.Image);
-            photoImage = String.Format("data:image/gif;base64,{0}", base64File);
+            string photoImage = "";
+            if (photo.Image != null)
+            {
+                var base64File = Convert.ToBase64String(photo.Image);
+                photoImage = String.Format("data:image/gif;base64,{0}", base64File);
+            }
+            <div class="dope-af-card">
+                <img class="materialboxed" src="@photoImage" width="200" />
+
+            </div>
         }
-        <div class="dope-af-card">
-            <img src="@photoImage" width="200" />
-
-        </div>
     }
-}
+   
+    @*@Html.ActionLink("Add photo", "AddPhoto", new { id = Model.Id })*@
 
-@Html.ActionLink("Add photo", "AddPhoto", new { id = Model.Id })
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: 'GET',
+            dataType: 'html',
+            data: {id: @Model.Id},
+            url: '@Url.Action("AddPhoto", "Photo")',
+            success: function (result) {
+                $('#photos').html(result);
+            }
+        });
+    });
+</script>
 
 
 
