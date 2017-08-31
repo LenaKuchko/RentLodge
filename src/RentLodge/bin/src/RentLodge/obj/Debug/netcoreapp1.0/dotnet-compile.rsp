@@ -109,6 +109,7 @@
 --reference:C:\Users\Elena\.nuget\packages\Microsoft.Extensions.Logging.Abstractions\1.0.0\lib\netstandard1.1\Microsoft.Extensions.Logging.Abstractions.dll
 --reference:C:\Users\Elena\.nuget\packages\Microsoft.Extensions.Logging.Console\1.0.0\lib\netstandard1.3\Microsoft.Extensions.Logging.Console.dll
 --reference:C:\Users\Elena\.nuget\packages\Microsoft.Extensions.Logging.Debug\1.0.0\lib\netstandard1.3\Microsoft.Extensions.Logging.Debug.dll
+--reference:C:\Users\Elena\.nuget\packages\Microsoft.Extensions.Logging.TraceSource\1.0.0\lib\netstandard1.3\Microsoft.Extensions.Logging.TraceSource.dll
 --reference:C:\Users\Elena\.nuget\packages\Microsoft.Extensions.ObjectPool\1.0.0\lib\netstandard1.3\Microsoft.Extensions.ObjectPool.dll
 --reference:C:\Users\Elena\.nuget\packages\Microsoft.Extensions.Options\1.0.0\lib\netstandard1.0\Microsoft.Extensions.Options.dll
 --reference:C:\Users\Elena\.nuget\packages\Microsoft.Extensions.Options.ConfigurationExtensions\1.0.0\lib\netstandard1.1\Microsoft.Extensions.Options.ConfigurationExtensions.dll
@@ -164,6 +165,7 @@
 --reference:C:\Users\Elena\.nuget\packages\System.Diagnostics.Process\4.1.0\ref\netstandard1.4\System.Diagnostics.Process.dll
 --reference:C:\Users\Elena\.nuget\packages\System.Diagnostics.StackTrace\4.0.1\ref\netstandard1.3\System.Diagnostics.StackTrace.dll
 --reference:C:\Users\Elena\.nuget\packages\System.Diagnostics.Tools\4.0.1\ref\netstandard1.0\System.Diagnostics.Tools.dll
+--reference:C:\Users\Elena\.nuget\packages\System.Diagnostics.TraceSource\4.0.0\ref\netstandard1.3\System.Diagnostics.TraceSource.dll
 --reference:C:\Users\Elena\.nuget\packages\System.Diagnostics.Tracing\4.1.0\ref\netstandard1.5\System.Diagnostics.Tracing.dll
 --reference:C:\Users\Elena\.nuget\packages\System.Dynamic.Runtime\4.0.11\ref\netstandard1.3\System.Dynamic.Runtime.dll
 --reference:C:\Users\Elena\.nuget\packages\System.Globalization\4.3.0-preview1-24530-04\ref\netstandard1.3\System.Globalization.dll
@@ -203,7 +205,7 @@
 --reference:C:\Users\Elena\.nuget\packages\System.Reflection.TypeExtensions\4.1.0\ref\netstandard1.5\System.Reflection.TypeExtensions.dll
 --reference:C:\Users\Elena\.nuget\packages\System.Resources.Reader\4.0.0\lib\netstandard1.0\System.Resources.Reader.dll
 --reference:C:\Users\Elena\.nuget\packages\System.Resources.ResourceManager\4.3.0-preview1-24530-04\ref\netstandard1.0\System.Resources.ResourceManager.dll
---reference:C:\Users\Elena\.nuget\packages\System.Runtime\4.3.0-preview1-24530-04\ref\netstandard1.5\System.Runtime.dll
+--reference:C:\Users\Elena\.nuget\packages\System.Runtime\4.1.0\ref\netstandard1.5\System.Runtime.dll
 --reference:C:\Users\Elena\.nuget\packages\System.Runtime.Extensions\4.1.0\ref\netstandard1.5\System.Runtime.Extensions.dll
 --reference:C:\Users\Elena\.nuget\packages\System.Runtime.Handles\4.0.1\ref\netstandard1.3\System.Runtime.Handles.dll
 --reference:C:\Users\Elena\.nuget\packages\System.Runtime.InteropServices\4.1.0\ref\netstandard1.5\System.Runtime.InteropServices.dll

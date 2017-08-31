@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using System.Globalization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RentLodge.Controllers
 {
@@ -31,7 +32,7 @@ namespace RentLodge.Controllers
             var guestReservations = this._db.Reservations.Include(res => res.Apartment).Where(res => res.GuestId == userId).ToList();
             return View(guestReservations);
         }
-
+        [Authorize]
         public IActionResult Create()
         {
             var moveIn = HttpContext.Session.GetString("MoveIn");
@@ -40,7 +41,7 @@ namespace RentLodge.Controllers
             ViewBag.moveOut = moveOut;
             return View();
         }
-
+        [Authorize]
         [HttpPost]
         public IActionResult Create(int id)
         {

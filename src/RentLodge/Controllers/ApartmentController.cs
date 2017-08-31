@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Http;
 using RentLodge.Models.SearchViewModels;
 using System.Data.SqlClient;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RentLodge.Controllers
 {
@@ -77,8 +78,8 @@ namespace RentLodge.Controllers
             
                 "WHERE ap.Id not in " +
                 "(SELECT reservations.ApartmentId FROM Reservations reservations " +
-                "WHERE (reservations.MoveIn <= @moveIn AND reservations.MoveOut >= @moveOut) " +
-                "OR (reservations.MoveIn <= @moveIn AND reservations.MoveOut >= @moveOut) " +
+                "WHERE (reservations.MoveIn <= @moveIn AND reservations.MoveOut >= @moveIn) " +
+                "OR (reservations.MoveIn <= @moveOut AND reservations.MoveOut >= @moveOut) " +
                 "OR (reservations.MoveIn >= @moveIn AND reservations.MoveIn <= @moveIn) GROUP BY reservations.ApartmentId)" + city + country;
 
             var apartments = db.Apartments.FromSql(query, parameters).Include(apart => apart.Address).ToList();
@@ -135,7 +136,6 @@ namespace RentLodge.Controllers
                 .Where(apartment => apartment.UserId == userId).ToList();
             return View(ownerApartments);
         }
-
         public IActionResult Details(int id)
         {
             Apartment apartmentToDisplay = this._db.Apartments.Include(ap => ap.Address)
