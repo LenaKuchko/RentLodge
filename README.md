@@ -26,7 +26,7 @@ This application uses Asp.NET to demonstrate a basic, relational database using 
 ## Setup/Installation Requirements
 Visual Studio 2015
 SQL Server Management Studio
-Geocoder API Key (you can get it here for free https://developers.google.com/maps/documentation/geocoding/get-api-key and add it to EnvironmentVariables)
+Geocoder API Key (you can get it here for free https://developers.google.com/maps/documentation/geocoding/get-api-key and add it to EnvironmentVariables.cs)
 GeocoderKey = "YOUR_KEY"
 
 

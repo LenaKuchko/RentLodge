@@ -2,15 +2,17 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div>
-    <form asp-controller="Review" asp-action="Create" method="post" class="form-horizontal">
-        <h2>@Model.Apartment.Title</h2>
-        <input name="ApartmentId" value="@Model.ApartmentId" type="hidden" />
-        <input name="reservationId" value="@Model.Id" type="hidden" />
-        
-        <div id="review-create"></div>
-        <button type="submit">Leave review</button>
-    </form>
+<div class="row">
+    <div class="col l11 offset-l1">
+        <form asp-controller="Review" asp-action="Create" method="post" class="form-horizontal">
+            <h2>@Model.Apartment.Title</h2>
+            <input name="ApartmentId" value="@Model.ApartmentId" type="hidden" />
+            <input name="reservationId" value="@Model.Id" type="hidden" />
+
+            <div id="review-create"></div>
+            <button type="submit">Leave review</button>
+        </form>
+    </div>
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
