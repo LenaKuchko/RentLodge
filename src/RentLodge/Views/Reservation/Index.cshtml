@@ -2,16 +2,20 @@
 
 @{
 }
-<h3>Reservation's history</h3>
+<div class="row">
+    <div class="col l11 offset-l1">
+        <h3>Reservation's history</h3>
 
-<ul>
-    @foreach (var item in Model)
-    { 
-        <li>
-            @Html.ActionLink(item.Apartment.Title, "Details", new { id = item.Id })
-        </li>
-    }
-</ul>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>
+                    @Html.ActionLink(item.Apartment.Title, "Details", new { id = item.Id })
+                </li>
+            }
+        </ul>
+    </div>
+</div>
 
 
 

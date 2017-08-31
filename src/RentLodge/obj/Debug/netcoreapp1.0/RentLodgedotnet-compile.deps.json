@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0/",
-    "signature": "13ab117aeb49a89df5d16753876c1ff88947fa98"
+    "signature": "d55590f258a6a3d3a21a543dddf09695f1141e90"
   },
   "compilationOptions": {
     "defines": [
@@ -42,7 +42,8 @@
           "Newtonsoft.Json": "9.0.1",
           "Microsoft.AspNetCore.Identity": "1.0.0",
           "Microsoft.Extensions.Logging.TraceSource": "1.0.0",
-          "System.Runtime": "4.1.0"
+          "System.Runtime": "4.1.0",
+          "Microsoft.Extensions.Logging.Filter": "1.0.0"
         },
         "compile": {
           "RentLodge.dll": {}
@@ -1110,6 +1111,15 @@
         },
         "compile": {
           "lib/netstandard1.3/Microsoft.Extensions.Logging.Debug.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Filter/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.1/Microsoft.Extensions.Logging.Filter.dll": {}
         }
       },
       "Microsoft.Extensions.Logging.TraceSource/1.0.0": {
@@ -3047,7 +3057,8 @@
           "Newtonsoft.Json": "9.0.1",
           "Microsoft.AspNetCore.Identity": "1.0.0",
           "Microsoft.Extensions.Logging.TraceSource": "1.0.0",
-          "System.Runtime": "4.1.0"
+          "System.Runtime": "4.1.0",
+          "Microsoft.Extensions.Logging.Filter": "1.0.0"
         },
         "runtime": {
           "RentLodge.dll": {}
@@ -4118,6 +4129,15 @@
         },
         "runtime": {
           "lib/netstandard1.3/Microsoft.Extensions.Logging.Debug.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Filter/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0"
+        },
+        "runtime": {
+          "lib/netstandard1.1/Microsoft.Extensions.Logging.Filter.dll": {}
         }
       },
       "Microsoft.Extensions.Logging.TraceSource/1.0.0": {
@@ -6334,6 +6354,11 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-V8fP8pGJxieGa1DAYOF1RX+cCGGqdOGNoAQUzxmy27+qNzbHB/cUXc7mCZT72jPZMB4U12zSVWlIt26GMsUIOg=="
+    },
+    "Microsoft.Extensions.Logging.Filter/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kaaLmv27pRZeBcYDiVMBwSz6/iaG9ROk8F6uat1Cs4cxqrahlVgeqnKBP+gANa5hZwgwMQLwaaLUb6qPI/l1Yw=="
     },
     "Microsoft.Extensions.Logging.TraceSource/1.0.0": {
       "type": "package",

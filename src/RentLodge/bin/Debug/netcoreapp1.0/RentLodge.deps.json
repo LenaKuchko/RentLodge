@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0",
-    "signature": "3caff136b4d3f85cd531e9a2e1dc262dccd0d003"
+    "signature": "cc25e04982e5479304df696d29f2cf8d1d48f97f"
   },
   "compilationOptions": {
     "defines": [
@@ -42,7 +42,8 @@
           "Newtonsoft.Json": "9.0.1",
           "Microsoft.AspNetCore.Identity": "1.0.0",
           "Microsoft.Extensions.Logging.TraceSource": "1.0.0",
-          "System.Runtime": "4.1.0"
+          "System.Runtime": "4.1.0",
+          "Microsoft.Extensions.Logging.Filter": "1.0.0"
         },
         "runtime": {
           "RentLodge.dll": {}
@@ -1445,6 +1446,18 @@
         },
         "compile": {
           "lib/netstandard1.3/Microsoft.Extensions.Logging.Debug.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Filter/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0"
+        },
+        "runtime": {
+          "lib/netstandard1.1/Microsoft.Extensions.Logging.Filter.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.1/Microsoft.Extensions.Logging.Filter.dll": {}
         }
       },
       "Microsoft.Extensions.Logging.TraceSource/1.0.0": {
@@ -4416,6 +4429,11 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-V8fP8pGJxieGa1DAYOF1RX+cCGGqdOGNoAQUzxmy27+qNzbHB/cUXc7mCZT72jPZMB4U12zSVWlIt26GMsUIOg=="
+    },
+    "Microsoft.Extensions.Logging.Filter/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kaaLmv27pRZeBcYDiVMBwSz6/iaG9ROk8F6uat1Cs4cxqrahlVgeqnKBP+gANa5hZwgwMQLwaaLUb6qPI/l1Yw=="
     },
     "Microsoft.Extensions.Logging.TraceSource/1.0.0": {
       "type": "package",

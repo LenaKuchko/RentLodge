@@ -106,6 +106,7 @@ body {
     margin: 10px !important;
     text-align:center;
     font-size: 26px !important;
+    color: black !important;
 }
 .main-search {
     width: 90%;
@@ -309,4 +310,7 @@ option:hover {
 .details-photo {
     height: 400px !important;
     width: auto;
+}
+.login {
+    color: orange !important;
 }
